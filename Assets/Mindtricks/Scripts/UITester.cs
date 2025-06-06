@@ -17,6 +17,7 @@ public class UITester : MonoBehaviour
     public void TestShopManager()
     {
         shopManager.InitShop();
+        shopManager.ShowUI();
     }
 
     public void DebugShopAction()

@@ -18,6 +18,16 @@ public class ShopManager : MonoBehaviour
     {
         IngredientsSelectedList = new List<Ingredient>();
     }
+
+    internal void ShowUI()
+    {
+        shopManagerUI.ShowUI();
+    }
+    internal void HideUI()
+    {
+        shopManagerUI.HideUI();
+    }
+
     public void InitShop()
     {
         shopManagerUI.CreateUI(ingredientManager.ingredientsToBuy);
@@ -34,6 +44,10 @@ public class ShopManager : MonoBehaviour
         {
             moneyManager.SpendMoney(ingredientSelected.costo);
             ingredientManager.UnlockIngredient(ingredientSelected);
+
+            IngredientsSelectedList.Remove(ingredientSelected);
+            ingredientSelected = null;
+
             shopManagerUI.CreateUI(ingredientManager.ingredientsToBuy);
         }
     

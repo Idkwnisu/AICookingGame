@@ -36,16 +36,47 @@ public class RequestManagerUI : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        GetUIReferences();
+        HideUI();
+        RegisterCallbacks();
+        CreateArrays();
+    }
+
+    public void GetUIReferences()
+    {
         root = uiDocument.rootVisualElement;
         requestLabel = root.Q<Label>("RequestLabel");
         answerLabel = root.Q<Label>("AnswerLabel");
         recipeLabel = root.Q<Label>("RecipeLabel");
         scrollView = root.Q<ScrollView>("Ingredients");
         sendButton = root.Q<UnityEngine.UIElements.Button>("SendButton");
+    }
+
+
+    public void RegisterCallbacks()
+    {
         sendButton.RegisterCallback<ClickEvent>(ClickedButton);
+
+    }
+
+    public void CreateArrays()
+    {
         ingredientsSelected = new Dictionary<Ingredient, Button>();
         allIngredients = new Dictionary<Ingredient, Button>();
     }
+
+
+    public void HideUI()
+    {
+        root.visible = false;
+    }
+
+    public void ShowUI()
+    {
+        root.visible = true;
+    }
+
+
     private void ClickedButton(ClickEvent evt)
     {
         if (sendButton.text == "Send")
@@ -70,7 +101,7 @@ public class RequestManagerUI : MonoBehaviour
     }
     public void CreateUI(List<Ingredient> ingredientsToAdd)
     {
-        ResetUI();
+        ResetUIAndIngredients();
         for (int i = 0; i*rowSize < ingredientsToAdd.Count; i += 1)
         {
             VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + (i+1));
@@ -84,16 +115,17 @@ public class RequestManagerUI : MonoBehaviour
                     button.text = ingredientsToAdd[i * rowSize + j].nomeIngrediente;
 
                     button.RegisterCallback<ClickEvent, Ingredient>(ClickEvent, ingredientsToAdd[i* rowSize + j]);
-                    allIngredients.Add(ingredientsToAdd[i * rowSize + j], button);
+                    allIngredients.Add(ingredientsToAdd[i * rowSize + j], button);  
                 }
             }
         }
 
     }
 
-    public void ResetUI()
+    public void ResetUIAndIngredients()
     {
-        for(int i = 0; i < columnSize; i++)
+        allIngredients.Clear();
+        for (int i = 0; i < columnSize; i++)
         {
             VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + (i + 1));
 

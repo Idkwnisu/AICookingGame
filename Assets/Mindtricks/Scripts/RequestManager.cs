@@ -31,6 +31,14 @@ public class RequestManager : MonoBehaviour
         IngredientsSelectedList = new List<Ingredient>();
     }
 
+    internal void ShowUI()
+    {
+        requestManagerUI.ShowUI();
+    }
+    internal void HideUI()
+    {
+        requestManagerUI.HideUI();
+    }
     public void ResetOrInitRequestManager()
     {
         requestManagerUI.CreateUI(ingredientManager.currentIngredients);

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 210cb8c9efd586943bf5569d84f60d8b, type: 3}
-  m_Name: Peppercorn
+  m_Name: 07_Potato
   m_EditorClassIdentifier: 
-  nomeIngrediente: Peppercorn
+  nomeIngrediente: Potato
   descrizione: 
   costo: 3

@@ -27,7 +27,6 @@ public class ShopManagerUI : MonoBehaviour
     private ScrollView scrollView;
     public Color normalColor;
     public Color selectedColor;
-    public Color blockedColor;
     public int numSelection = 1;
 
 
@@ -38,9 +37,9 @@ public class ShopManagerUI : MonoBehaviour
     {
         GetUIReferences();
         RegisterCallbacks();
-
-        allIngredients = new Dictionary<Ingredient, Button>();        
-}
+        HideUI();
+        CreateArrays();
+    }
 
     public void RegisterCallbacks()
     {
@@ -68,9 +67,24 @@ public class ShopManagerUI : MonoBehaviour
         closeButton = root.Q<UIButton>("CloseButton");
     }
 
+    public void HideUI()
+    {
+        root.visible = false;
+    }
+
+    public void ShowUI()
+    {
+        root.visible = true;
+    }
+
+    public void CreateArrays()
+    {
+        allIngredients = new Dictionary<Ingredient, Button>();
+    }
+
     public void CreateUI(List<Ingredient> ingredientsToAdd)
     {
-        ResetUI();
+        ResetUIAndIngredients();
 
         for (int i = 0; i * rowSize < ingredientsToAdd.Count; i += 1)
         {
@@ -109,8 +123,9 @@ public class ShopManagerUI : MonoBehaviour
     }
 
 
-    public void ResetUI()
+    public void ResetUIAndIngredients()
     {
+        allIngredients.Clear();
         for (int i = 0; i < columnSize; i++)
         {
             int currentIngredientRow = (i + 1);
@@ -120,6 +135,7 @@ public class ShopManagerUI : MonoBehaviour
             {
                 int currentRow = (j + 1);
                 Button button = itemRoot.Q<Button>("IngredientButton" + currentIngredientRow + currentRow);
+                button.style.backgroundColor = normalColor;
                 button.visible = false;
             }
         }
