@@ -1,0 +1,10 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="CurrentDayContainer" style="flex-grow: 1; background-color: rgb(61, 61, 61); width: 10%; height: 15%; position: absolute;">
+        <engine:Label text="Current Day" name="CurrentDayLabel" data-source="project://database/Assets/Mindtricks/Objects/Internal/CurrentDayInfo.asset?fileID=11400000&amp;guid=2aee00e1b0a8bd44890257e12a31cf0f&amp;type=2#CurrentDayInfo" data-source-path="currentDay" style="color: rgb(255, 255, 255); font-size: 30px; -unity-text-align: upper-center;" />
+        <engine:Label text="0" enable-rich-text="true" name="CurrentDayLabelText" data-source="project://database/Assets/Mindtricks/Objects/Internal/CurrentDayInfo.asset?fileID=11400000&amp;guid=2aee00e1b0a8bd44890257e12a31cf0f&amp;type=2#CurrentDayInfo" data-source-path="currentDay" style="font-size: 70px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: upper-center;" />
+    </engine:VisualElement>
+    <engine:VisualElement name="CurrentHourContainer" style="flex-grow: 1; background-color: rgb(61, 61, 61); width: 10%; height: 15%; position: absolute; right: 0;">
+        <engine:Label text="Current Phase" name="CurrentDayLabel" style="color: rgb(255, 255, 255); font-size: 30px; -unity-text-align: upper-center;" />
+        <engine:Label text="0" enable-rich-text="true" name="CurrentDayLabelText" style="font-size: 70px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: upper-center;" />
+    </engine:VisualElement>
+</engine:UXML>

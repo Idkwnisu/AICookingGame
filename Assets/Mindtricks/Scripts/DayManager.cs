@@ -1,4 +1,6 @@
 using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -21,8 +23,7 @@ public struct Phase {
 
 public class DayManager : MonoBehaviour
 {
-    public int currentDay;
-    public DAY_PHASE currentPhase;
+    public CurrentTimeInfos currentTimeInfos;
     public Phase[] phasesOfDay;
 
     public UnityEvent<int> dayStarted;
@@ -30,43 +31,55 @@ public class DayManager : MonoBehaviour
     public RequestManager requestManager;
     public DialogueEventManager dialogueEventManager;
 
+    private void Start()
+    {
+        StartGameOrLoad();
+    }
+
+    public void StartGameOrLoad()
+    {
+        //Check for savefile here
+        currentTimeInfos.currentDay = 1;
+        currentTimeInfos.currentPhase = DAY_PHASE.MORNING;
+    }
+
 
     public void NewDay()
     {
-        currentDay++;
+        currentTimeInfos.currentDay++;
         DeactivateCurrentPhaseGameObjects();
         phasesOfDay[phasesOfDay.Length - 1].onExit.Invoke();
-        currentPhase = phasesOfDay[0].phase;
+        currentTimeInfos.currentPhase = phasesOfDay[0].phase;
         ActivateCurrentPhaseGameObjects();
         phasesOfDay[0].onEnter.Invoke();
     }
 
     public void DeactivateCurrentPhaseGameObjects()
     {
-        for (int i = 0; i < phasesOfDay[(int)currentPhase].toActivate.Length; i++)
+        for (int i = 0; i < phasesOfDay[(int)currentTimeInfos.currentPhase].toActivate.Length; i++)
         {
-            phasesOfDay[(int)currentPhase].toActivate[i].SetActive(false);
+            phasesOfDay[(int)currentTimeInfos.currentPhase].toActivate[i].SetActive(false);
         }
     }
 
     public void ActivateCurrentPhaseGameObjects()
     {
-        for (int i = 0; i < phasesOfDay[(int)currentPhase].toActivate.Length; i++)
+        for (int i = 0; i < phasesOfDay[(int)currentTimeInfos.currentPhase].toActivate.Length; i++)
         {
-            phasesOfDay[(int)currentPhase].toActivate[i].SetActive(true);
+            phasesOfDay[(int)currentTimeInfos.currentPhase].toActivate[i].SetActive(true);
         }
     }
 
     public void NewPhase()
     {
-        if ((int)currentPhase + 1 >= phasesOfDay.Length)
+        if ((int)currentTimeInfos.currentPhase + 1 >= phasesOfDay.Length)
         {
             NewDay();
         }
         else
         {
             DeactivateCurrentPhaseGameObjects();
-            currentPhase++;
+            currentTimeInfos.currentPhase++;
             ActivateCurrentPhaseGameObjects();
         }
     }
