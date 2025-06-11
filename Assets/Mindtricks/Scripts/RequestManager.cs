@@ -39,9 +39,14 @@ public class RequestManager : MonoBehaviour
     {
         requestManagerUI.HideUI();
     }
-    public void ResetOrInitRequestManager()
+    public void ShowRequestUI()
     {
         requestManagerUI.CreateUI(ingredientManager.currentIngredients);
+        ShowUI();
+    }
+    public void CloseRequestUI()
+    {
+        HideUI();
     }
 
     public bool isIngredientSelected(Ingredient ingredient)

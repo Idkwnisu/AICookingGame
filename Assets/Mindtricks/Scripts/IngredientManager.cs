@@ -53,7 +53,6 @@ public class IngredientManager : MonoBehaviour
         {
             ingredientsToBuy.Remove(ingredientToUnlock);
             currentIngredients.Add(ingredientToUnlock);
-            requestManager.ResetOrInitRequestManager();
             IngredientsHaveChanged_Event.Invoke();
         }
     }    

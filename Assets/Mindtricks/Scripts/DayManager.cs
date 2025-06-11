@@ -39,8 +39,10 @@ public class DayManager : MonoBehaviour
     public void StartGameOrLoad()
     {
         //Check for savefile here
-        currentTimeInfos.currentDay = 1;
-        currentTimeInfos.currentPhase = DAY_PHASE.MORNING;
+        currentTimeInfos.currentDay = 0;
+        currentTimeInfos.currentPhase = DAY_PHASE.NIGHT;
+
+        NewDay();
     }
 
 
@@ -79,7 +81,9 @@ public class DayManager : MonoBehaviour
         else
         {
             DeactivateCurrentPhaseGameObjects();
+            phasesOfDay[((int)currentTimeInfos.currentPhase)].onExit.Invoke();
             currentTimeInfos.currentPhase++;
+            phasesOfDay[((int)currentTimeInfos.currentPhase)].onEnter.Invoke();
             ActivateCurrentPhaseGameObjects();
         }
     }

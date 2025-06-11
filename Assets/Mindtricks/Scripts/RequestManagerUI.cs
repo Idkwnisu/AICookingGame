@@ -10,6 +10,7 @@ using Button = UnityEngine.UIElements.Button;
 public class RequestManagerUI : MonoBehaviour
 {
     VisualElement root;
+    VisualElement rootRequest;
     public UIDocument uiDocument;
     public Button templateButton;
     public VisualElement templateRow;
@@ -45,11 +46,13 @@ public class RequestManagerUI : MonoBehaviour
     public void GetUIReferences()
     {
         root = uiDocument.rootVisualElement;
-        requestLabel = root.Q<Label>("RequestLabel");
-        answerLabel = root.Q<Label>("AnswerLabel");
-        recipeLabel = root.Q<Label>("RecipeLabel");
-        scrollView = root.Q<ScrollView>("Ingredients");
-        sendButton = root.Q<UnityEngine.UIElements.Button>("SendButton");
+        rootRequest = root.Q<VisualElement>("RequestUI");
+
+        requestLabel = root.Q<Label>("RequestLabel_Requests");
+        answerLabel = root.Q<Label>("AnswerLabel_Requests");
+        recipeLabel = root.Q<Label>("RecipeLabel_Requests");
+        scrollView = root.Q<ScrollView>("Ingredients_Requests");
+        sendButton = root.Q<UnityEngine.UIElements.Button>("SendButton_Requests");
     }
 
 
@@ -68,12 +71,15 @@ public class RequestManagerUI : MonoBehaviour
 
     public void HideUI()
     {
-        root.visible = false;
+        rootRequest.visible = false;
+        rootRequest.SetEnabled(false);
+        ResetUIAndIngredients();
     }
 
     public void ShowUI()
     {
-        root.visible = true;
+        rootRequest.visible = true;
+        rootRequest.SetEnabled(true);
     }
 
 
@@ -104,14 +110,16 @@ public class RequestManagerUI : MonoBehaviour
         ResetUIAndIngredients();
         for (int i = 0; i*rowSize < ingredientsToAdd.Count; i += 1)
         {
-            VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + (i+1));
+            VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + (i+1) + "_Requests");
             itemRoot.visible = true;
+            itemRoot.SetEnabled(true);
             for (int j = 0; j < rowSize; j++)
             {
                 if (i * rowSize + j < ingredientsToAdd.Count)
                 {
-                    Button button = itemRoot.Q<Button>("IngredientButton" + (i+1) + (j+1));
+                    Button button = itemRoot.Q<Button>("IngredientButton" + (i+1) + (j+1) + "_Requests");
                     button.visible = true;
+                    button.SetEnabled(true);
                     button.text = ingredientsToAdd[i * rowSize + j].nomeIngrediente;
 
                     button.RegisterCallback<ClickEvent, Ingredient>(ClickEvent, ingredientsToAdd[i* rowSize + j]);
@@ -124,15 +132,17 @@ public class RequestManagerUI : MonoBehaviour
 
     public void ResetUIAndIngredients()
     {
-        allIngredients.Clear();
+        allIngredients?.Clear();
         for (int i = 0; i < columnSize; i++)
         {
-            VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + (i + 1));
-
+            VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + (i + 1) + "_Requests");
+            itemRoot.visible = false;
+            itemRoot.SetEnabled(false);
             for (int j = 0; j < rowSize; j++)
             {
-                Button button = itemRoot.Q<Button>("IngredientButton" + (i + 1) + (j + 1));
+                Button button = itemRoot.Q<Button>("IngredientButton" + (i + 1) + (j + 1) + "_Requests");
                 button.visible = false;
+                button.SetEnabled(false);
             }
         }
     }
@@ -142,14 +152,16 @@ public class RequestManagerUI : MonoBehaviour
         ClickButton(button);
     }
 
-    public void Hidebutton()
+    public void HideSendButton()
     {
         sendButton.visible = false;
+        sendButton.SetEnabled(false);
     }
 
-    public void ShowButton()
+    public void ShowSendButton()
     {
         sendButton.visible = true;
+        sendButton.SetEnabled(true);
     }
 
     public void ClickButton(Ingredient i)

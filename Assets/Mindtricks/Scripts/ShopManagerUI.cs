@@ -7,6 +7,7 @@ public class ShopManagerUI : MonoBehaviour
 {
     public ShopManager shopManager;
     VisualElement root;
+    VisualElement rootShop;
     public UIDocument uiDocument;
     public VisualElement templateRow;
 
@@ -33,7 +34,7 @@ public class ShopManagerUI : MonoBehaviour
     private int rowSize = 5;
     private int columnSize = 12;
 
-    private void Start()
+    private void Awake()
     {
         GetUIReferences();
         RegisterCallbacks();
@@ -52,29 +53,33 @@ public class ShopManagerUI : MonoBehaviour
     public void GetUIReferences()
     {
         root = uiDocument.rootVisualElement;
+        rootShop = root.Q<VisualElement>("ShopUI");
 
-        scrollView = root.Q<ScrollView>("Ingredients");
-        infoPanel = root.Q<VisualElement>("InfoPanel");
+        scrollView = root.Q<ScrollView>("Ingredients_Shop");
+        infoPanel = root.Q<VisualElement>("InfoPanel_Shop");
 
-        moneyLabel = root.Q<Label>("MoneyLabel");
-        IngredientNameLabel = root.Q<Label>("IngredientNameLabel");
-        IngredientDescriptionLabel = root.Q<Label>("IngredientDescriptionLabel");
-        IngredientCostLabel = root.Q<Label>("IngredientCostLabel");
+        moneyLabel = root.Q<Label>("MoneyLabel_Shop");
+        IngredientNameLabel = root.Q<Label>("IngredientNameLabel_Shop");
+        IngredientDescriptionLabel = root.Q<Label>("IngredientDescriptionLabel_Shop");
+        IngredientCostLabel = root.Q<Label>("IngredientCostLabel_Shop");
 
-        buyButton = root.Q<UIButton>("BuyButton");
-        buyButtonModal = root.Q<UIButton>("BuyButtonModal");
-        infoButton = root.Q<UIButton>("InfoButton");
-        closeButton = root.Q<UIButton>("CloseButton");
+        buyButton = root.Q<UIButton>("BuyButton_Shop");
+        buyButtonModal = root.Q<UIButton>("BuyButtonModal_Shop");
+        infoButton = root.Q<UIButton>("InfoButton_Shop");
+        closeButton = root.Q<UIButton>("CloseButton_Shop");
     }
 
     public void HideUI()
     {
-        root.visible = false;
+        rootShop.visible = false;
+        rootShop.SetEnabled(false);
+        ResetUIAndIngredients();
     }
 
     public void ShowUI()
     {
-        root.visible = true;
+        rootShop.visible = true;
+        rootShop.SetEnabled(true);
     }
 
     public void CreateArrays()
@@ -89,16 +94,18 @@ public class ShopManagerUI : MonoBehaviour
         for (int i = 0; i * rowSize < ingredientsToAdd.Count; i += 1)
         {
             int currentIngredientRow = (i + 1);
-            VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + currentIngredientRow);
+            VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + currentIngredientRow + "_Shop");
             itemRoot.visible = true;
+            itemRoot.SetEnabled(true);
             for (int j = 0; j < rowSize; j++)
             {
                 if (i * rowSize + j < ingredientsToAdd.Count)
                 {
                     int currentRow = (j + 1);
                     int currentItemInFullList = i * rowSize + j;
-                    Button button = itemRoot.Q<Button>("IngredientButton" + currentIngredientRow + currentRow);
+                    Button button = itemRoot.Q<Button>("IngredientButton" + currentIngredientRow + currentRow + "_Shop");
                     button.visible = true;
+                    button.SetEnabled(true);
                     button.text = ingredientsToAdd[currentItemInFullList].nomeIngrediente;
 
                     button.RegisterCallback<ClickEvent, Ingredient>(ClickEvent, ingredientsToAdd[currentItemInFullList]);
@@ -119,24 +126,31 @@ public class ShopManagerUI : MonoBehaviour
     {
         shopManager.SelectIngredient(i);
         ingredientSelectedButton = allIngredients[i];
+        foreach(KeyValuePair<Ingredient, Button> ingredientButton in allIngredients)
+        {
+            ingredientButton.Value.style.backgroundColor = normalColor;
+        }
         ingredientSelectedButton.style.backgroundColor = selectedColor;
     }
 
 
     public void ResetUIAndIngredients()
     {
-        allIngredients.Clear();
+        allIngredients?.Clear();
         for (int i = 0; i < columnSize; i++)
         {
             int currentIngredientRow = (i + 1);
-            VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + currentIngredientRow);
+            VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + currentIngredientRow + "_Shop");
+            itemRoot.visible = false;
+            itemRoot.SetEnabled(false);
 
             for (int j = 0; j < rowSize; j++)
             {
                 int currentRow = (j + 1);
-                Button button = itemRoot.Q<Button>("IngredientButton" + currentIngredientRow + currentRow);
+                Button button = itemRoot.Q<Button>("IngredientButton" + currentIngredientRow + currentRow + "_Shop");
                 button.style.backgroundColor = normalColor;
                 button.visible = false;
+                button.SetEnabled(false);
             }
         }
     }

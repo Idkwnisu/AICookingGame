@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: CurrentDayInfo
   m_EditorClassIdentifier: 
   currentDay: 0
-  currentPhase: 0
+  currentPhase: 4

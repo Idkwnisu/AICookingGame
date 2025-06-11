@@ -28,9 +28,15 @@ public class ShopManager : MonoBehaviour
         shopManagerUI.HideUI();
     }
 
-    public void InitShop()
+    public void InitShopUI()
     {
         shopManagerUI.CreateUI(ingredientManager.ingredientsToBuy);
+        ShowUI();
+    }
+
+    public void CloseShop()
+    {
+        HideUI();
     }
 
     internal void SelectIngredient(Ingredient i)

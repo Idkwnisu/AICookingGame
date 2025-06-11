@@ -153,18 +153,66 @@ MonoBehaviour:
   - phase: 0
     onEnter:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 768978309}
+          m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+          m_MethodName: InitShopUI
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onExit:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 768978309}
+          m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+          m_MethodName: CloseShop
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     toActivate: []
   - phase: 1
     onEnter:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1691976460}
+          m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
+          m_MethodName: ShowRequestUI
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onExit:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 1691976460}
+          m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
+          m_MethodName: CloseRequestUI
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     toActivate:
     - {fileID: 328892888}
   - phase: 2
@@ -246,7 +294,6 @@ Transform:
   m_Children:
   - {fileID: 1616728615}
   - {fileID: 1691976459}
-  - {fileID: 1460916792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526347112
@@ -687,7 +734,7 @@ GameObject:
   - component: {fileID: 796280045}
   - component: {fileID: 796280046}
   m_Layer: 0
-  m_Name: DayManagerUI
+  m_Name: UIDocument
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -701,12 +748,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 796280044}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.018860158, y: -0.09153856, z: 0.09678612}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2143594064}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &796280046
 MonoBehaviour:
@@ -723,7 +770,7 @@ MonoBehaviour:
   m_PanelSettings: {fileID: 11400000, guid: d7cc2bb1d137986488eaefc23220f17a, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: ed8b6d86559d77d49b39122d222998d6, type: 3}
-  m_SortingOrder: 0
+  m_SortingOrder: 11
   m_WorldSpaceSizeMode: 1
   m_WorldSpaceWidth: 1920
   m_WorldSpaceHeight: 1080
@@ -1113,59 +1160,7 @@ Transform:
   m_Children:
   - {fileID: 768978310}
   - {fileID: 1857361246}
-  - {fileID: 1970584793}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1460916790
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1460916792}
-  - component: {fileID: 1460916791}
-  m_Layer: 0
-  m_Name: UIDocumentRequest
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1460916791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460916790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: c3be9bd749b695d4c81cb29717e406fc, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 7c0d3e92c311b714fabb94eb47a3c905, type: 3}
-  m_SortingOrder: 0
-  m_WorldSpaceSizeMode: 1
-  m_WorldSpaceWidth: 1920
-  m_WorldSpaceHeight: 1080
---- !u!4 &1460916792
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1460916790}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 328892889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1581410063
 GameObject:
@@ -1272,7 +1267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04e2053e8829147449c6f369c9ffb133, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDocument: {fileID: 1460916791}
+  uiDocument: {fileID: 796280046}
   normalColor: {r: 0.16470589, g: 0.16470589, b: 0.16470589, a: 1}
   selectedColor: {r: 0, g: 0.27450982, b: 0.5568628, a: 1}
   blockedColor: {r: 0, g: 0, b: 0, a: 0}
@@ -1284,18 +1279,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: RecipeSender, Assembly-CSharp
         m_MethodName: SendRecipe
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIDocumentUpdater, Assembly-CSharp
-        m_MethodName: Hidebutton
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1414,7 +1397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopManager: {fileID: 768978309}
-  uiDocument: {fileID: 1970584792}
+  uiDocument: {fileID: 796280046}
   normalColor: {r: 0.16470589, g: 0.16470589, b: 0.16470589, a: 1}
   selectedColor: {r: 0, g: 0.27450982, b: 0.5568628, a: 1}
   numSelection: 1
@@ -1447,9 +1430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52b4718b21188fd47af3934f3da72349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ingredientsToTestWith:
-  - {fileID: 11400000, guid: b8c13a5741d15134cad4d9e1507d09f5, type: 2}
   shopManager: {fileID: 768978309}
+  dayManager: {fileID: 297788842}
 --- !u!4 &1893726853
 Transform:
   m_ObjectHideFlags: 0
@@ -1496,57 +1478,6 @@ Transform:
   m_Children:
   - {fileID: 1238547412}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1970584791
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1970584793}
-  - component: {fileID: 1970584792}
-  m_Layer: 0
-  m_Name: UIDocumentShop
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1970584792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970584791}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PanelSettings: {fileID: 11400000, guid: c3be9bd749b695d4c81cb29717e406fc, type: 2}
-  m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: bb9c42d40fefad546a54765fe9e24883, type: 3}
-  m_SortingOrder: 0
-  m_WorldSpaceSizeMode: 1
-  m_WorldSpaceWidth: 1920
-  m_WorldSpaceHeight: 1080
---- !u!4 &1970584793
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1970584791}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1449929470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2080544165
 GameObject:
@@ -1596,7 +1527,7 @@ MonoBehaviour:
   storyDialoguesToDrawFrom: []
   endlessDialogues: []
   unlockableDialogues: []
-  ingredientManager: {fileID: 0}
+  ingredientManager: {fileID: 1238547411}
   endlessProbability: 0.2
 --- !u!1 &2124823306
 GameObject:
@@ -1689,7 +1620,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 297788843}
-  - {fileID: 796280045}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
@@ -1702,10 +1632,11 @@ SceneRoots:
   - {fileID: 2124823308}
   - {fileID: 526347115}
   - {fileID: 1212902987}
-  - {fileID: 2143594064}
+  - {fileID: 796280045}
   - {fileID: 1449929470}
   - {fileID: 328892889}
   - {fileID: 1899112563}
   - {fileID: 777408414}
+  - {fileID: 2143594064}
   - {fileID: 1367461092}
   - {fileID: 1893726853}

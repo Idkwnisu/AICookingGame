@@ -2,9 +2,8 @@ using UnityEngine;
 
 public class UITester : MonoBehaviour
 {
-    public Ingredient[] ingredientsToTestWith;
-
     public ShopManager shopManager;
+    public DayManager dayManager;
 
     private void OnGUI()
     {
@@ -12,11 +11,32 @@ public class UITester : MonoBehaviour
         {
             TestShopManager();
         }
+
+        if (GUI.Button(new Rect(600, 10, 150, 100), "Next Phase"))
+        {
+            NextPhase();
+        }
+        if (GUI.Button(new Rect(600, 160, 150, 100), "Next Day"))
+        {
+            NextDay();
+        }
+
+    }
+
+    public void NextPhase()
+    {
+        dayManager.NewPhase();
+    }
+
+    public void NextDay()
+    {
+        dayManager.NewDay();
+
     }
 
     public void TestShopManager()
     {
-        shopManager.InitShop();
+        shopManager.InitShopUI();
         shopManager.ShowUI();
     }
 
