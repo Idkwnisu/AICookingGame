@@ -1,8 +1,10 @@
 <engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <engine:Template name="Shop" src="project://database/Assets/Mindtricks/UIToolkit/Screens/Shop.uxml?fileID=9197481963319205126&amp;guid=bb9c42d40fefad546a54765fe9e24883&amp;type=3#Shop" />
     <engine:Template name="Requests" src="project://database/Assets/Mindtricks/UIToolkit/Screens/Requests.uxml?fileID=9197481963319205126&amp;guid=7c0d3e92c311b714fabb94eb47a3c905&amp;type=3#Requests" />
+    <engine:Template name="Event" src="project://database/Assets/Mindtricks/UIToolkit/Screens/Dialogue.uxml?fileID=9197481963319205126&amp;guid=5b8ecc3ce9efcca42971b0ecbdb4bf00&amp;type=3#Dialogue" />
     <engine:Instance template="Shop" name="ShopUI" style="height: 100%; position: absolute; width: 100%;" />
     <engine:Instance template="Requests" name="RequestUI" style="position: absolute; width: 100%; height: 100%;" />
+    <engine:Instance template="Event" name="DialogueUI" style="position: absolute; width: 100%; height: 100%;" />
     <engine:VisualElement name="CurrentDayContainer" style="flex-grow: 1; background-color: rgb(61, 61, 61); width: 10%; height: 15%; position: absolute;">
         <engine:Label text="Current Day" name="CurrentDayLabel" data-source="project://database/Assets/Mindtricks/Objects/Internal/CurrentDayInfo.asset?fileID=11400000&amp;guid=2aee00e1b0a8bd44890257e12a31cf0f&amp;type=2#CurrentDayInfo" data-source-path="currentDay" style="color: rgb(255, 255, 255); font-size: 30px; -unity-text-align: upper-center;" />
         <engine:Label style="font-size: 70px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: upper-center;">

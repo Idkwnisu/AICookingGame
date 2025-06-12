@@ -30,7 +30,18 @@ public class DialogueEventManager : MonoBehaviour
     public IngredientManager ingredientManager; 
     public float endlessProbability = .2f;
 
+    public DialogueManagerUI dialogueManagerUI;
 
+
+    public void OpenDialogueScreen()
+    {
+        dialogueManagerUI.ShowUI();
+    }
+
+    public void CloseDialogueScreen()
+    {
+        dialogueManagerUI.HideUI();
+    }
     public DialogueEvent ExtractDialogue()
     {
         if(storyDialoguesToDrawFrom.Count != 0)

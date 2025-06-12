@@ -171,10 +171,11 @@ public class RequestManagerUI : MonoBehaviour
         {
             RemoveIngredientFromSelection(i);
         }
-        else
+        else if(ingredientsSelected.Count < numSelection)
         {
             AddIngredientToSelection(i, button);
         }
+
 
         if (ingredientsSelected.Count >= numSelection)
         {
