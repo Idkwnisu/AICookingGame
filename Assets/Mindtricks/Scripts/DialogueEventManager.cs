@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Events;
 
 public enum UnlockableDialogueType { STORY, RANDOM, ENDLESS }
 
@@ -27,11 +28,44 @@ public class DialogueEventManager : MonoBehaviour
     public List<DialogueEvent> storyDialoguesToDrawFrom;
     public List<DialogueEvent> endlessDialogues;
     public List<UnlockableDialogue> unlockableDialogues;
-    public IngredientManager ingredientManager; 
+    public IngredientManager ingredientManager;
+    public UnityEvent DialoguesAreOver;
     public float endlessProbability = .2f;
 
     public DialogueManagerUI dialogueManagerUI;
 
+    private DialogueEvent currentEvent;
+
+
+    private void Start()
+    {
+        dialogueManagerUI.pressedEnemyGoOn += ClickedNPCGoOnButton;
+        dialogueManagerUI.pressedCharacterChoice += ClickedPlayerChoiceButton;
+    }
+
+    public void ClickedNPCGoOnButton()
+    {
+        if(currentEvent.dialogueNPC.nextDialogue != null)
+        {
+            StartDialogue(currentEvent.dialogueNPC.nextDialogue);
+        }
+        else
+        {
+            DialoguesAreOver.Invoke();
+        }
+    }
+
+    public void ClickedPlayerChoiceButton(int buttonPressed)
+    {
+        if(currentEvent.playerDialogue.nextDialogues.Count != 0)
+        {
+            StartDialogue(currentEvent.playerDialogue.nextDialogues[buttonPressed]);
+        }
+        else
+        {
+            DialoguesAreOver.Invoke();
+        }
+    }
 
     public void OpenDialogueScreen()
     {
@@ -56,6 +90,17 @@ public class DialogueEventManager : MonoBehaviour
         {
             return endlessDialogues[UnityEngine.Random.Range(0, endlessDialogues.Count)];
         }
+    }
+
+    public void ExtractDialogueAndStartIt()
+    {
+        StartDialogue(ExtractDialogue());
+    }
+
+    public void StartDialogue(DialogueEvent dialogueEventToStart)
+    {
+        currentEvent = dialogueEventToStart;
+        dialogueManagerUI.ShowEvent(dialogueEventToStart);
     }
 
     public bool IsDialogueUnlockable(UnlockableDialogue unlockableDialogue)

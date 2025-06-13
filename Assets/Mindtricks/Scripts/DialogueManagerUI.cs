@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -11,6 +12,13 @@ public class DialogueManagerUI : MonoBehaviour
     Label characterSpeakingLabel;
     Label characterDialogueLabel;
     List<Button> playerChoicesButtons;
+    Button NPCButtoGoOn;
+    VisualElement characterImage;
+
+    public event Action pressedEnemyGoOn;
+    public event Action<int> pressedCharacterChoice;
+
+    private int numOfPlayerChoicesInDialogue = 3;
 
     void Awake()
     {
@@ -25,14 +33,19 @@ public class DialogueManagerUI : MonoBehaviour
     {
         root = uiDocument.rootVisualElement;
         rootDialogue = root.Q<VisualElement>("DialogueUI");
+        characterImage = root.Q<VisualElement>("CharacterSpeaking");
 
         characterSpeakingLabel = root.Q<Label>("CharacterSpeakingLabel");
         characterDialogueLabel = root.Q<Label>("NPCDialogue");
 
         playerChoicesButtons = new List<Button>();
-        playerChoicesButtons.Add(root.Q<Button>("PlayerResponse1"));
-        playerChoicesButtons.Add(root.Q<Button>("PlayerResponse2"));
-        playerChoicesButtons.Add(root.Q<Button>("PlayerResponse3"));
+        for(int i = 0; i < numOfPlayerChoicesInDialogue; i++)
+        {
+            playerChoicesButtons.Add(root.Q<Button>("PlayerResponse" + i));
+
+        }
+
+        NPCButtoGoOn = root.Q<Button>("NPCButtoGoOn");
     }
 
     public void ResetDialogueUI()
@@ -42,7 +55,7 @@ public class DialogueManagerUI : MonoBehaviour
         characterDialogueLabel.text = "";
         characterDialogueLabel.SetEnabled(false);
 
-        for(int i = 0; i < playerChoicesButtons.Count; i++)
+        for(int i = 0; i < numOfPlayerChoicesInDialogue; i++)
         {
             playerChoicesButtons[i].text = "";
             playerChoicesButtons[i].SetEnabled(false);
@@ -63,7 +76,21 @@ public class DialogueManagerUI : MonoBehaviour
 
     public void RegisterCallbacks()
     {
+        NPCButtoGoOn.RegisterCallback<ClickEvent>(ClickedNPCButton);
+        for (int i = 0; i < numOfPlayerChoicesInDialogue; i++)
+        {
+            playerChoicesButtons[i].RegisterCallback<ClickEvent, int>(ClickedPlayerButton, i);
+        }
+    }
 
+    public void ClickedNPCButton(ClickEvent ev)
+    {
+        pressedEnemyGoOn.Invoke();
+    }
+
+    public void ClickedPlayerButton(ClickEvent ev, int buttonNumber)
+    {
+        pressedCharacterChoice.Invoke(buttonNumber);
     }
 
     public void CreateArrays()
@@ -98,6 +125,7 @@ public class DialogueManagerUI : MonoBehaviour
             characterSpeakingLabel.text = dialogue.dialogueNPC.characterThatIsSpeaking.nomePersonaggio;
             characterDialogueLabel.text = dialogue.dialogueNPC.message;
             characterDialogueLabel.SetEnabled(true);
+            characterImage.style.backgroundImage = new StyleBackground(dialogue.dialogueNPC.characterThatIsSpeaking.immaginiEmozion[(int)dialogue.dialogueNPC.emotionToUse]);
 
             for (int i = 0; i < playerChoicesButtons.Count; i++)
             {
