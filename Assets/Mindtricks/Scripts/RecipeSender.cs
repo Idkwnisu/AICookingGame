@@ -7,8 +7,6 @@ using TMPro;
 
 public class RecipeSender : MonoBehaviour
 {
-    public List<string> requestsInRotation;
-
     public APISender apiSender;
 
     public string requestSelected;
@@ -21,7 +19,6 @@ public class RecipeSender : MonoBehaviour
     [TextArea(11, 25)]
     public string step3; //getting a response
 
-    public UnityEvent<string> requestUpdated;
     public UnityEvent<string> step1Response;
     public UnityEvent<string> step2Response;
     public UnityEvent<string> step3Response;
@@ -33,17 +30,6 @@ public class RecipeSender : MonoBehaviour
     private string recipe;
     private string score;
     private string response;
-
-    private void Start()
-    {
-        RerollRequest();
-    }
-
-    public void RerollRequest()
-    {
-        int r = UnityEngine.Random.Range(0, requestsInRotation.Count);
-        UpdateRequest(requestsInRotation[r]);
-    }
 
     public void SendRecipe(List<Ingredient> ingredients)
     {
@@ -87,11 +73,5 @@ public class RecipeSender : MonoBehaviour
     {
         Debug.Log("Response received: " + m);
         step3Response.Invoke(m);
-    }
-
-    public void UpdateRequest(string r)
-    {
-        requestSelected = r;
-        requestUpdated.Invoke(r);
     }
 }

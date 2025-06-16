@@ -4,7 +4,7 @@
     <engine:VisualElement name="DialogueArea" style="flex-grow: 1; position: absolute; bottom: 0; width: 100%; height: 40%; background-color: rgb(5, 43, 20);">
         <engine:Label text="Label" name="CharacterSpeakingLabel" style="position: absolute; width: 100%; height: 15%; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 18px; top: 0%;" />
         <engine:Label text="Label" name="NPCDialogue" style="position: absolute; width: 100%; height: 60%; color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 22px; top: 15%; -unity-text-align: upper-center;" />
-        <engine:Button text="Button" name="NPCButtonGoOn" style="position: absolute; bottom: 0; width: 100%; height: 20%;" />
+        <engine:Button text="..." name="NPCButtonGoOn" style="position: absolute; bottom: 0; width: 100%; height: 20%; -unity-font-style: bold; font-size: 47px;" />
         <engine:Button text="Button" name="PlayerResponse1" style="top: 15%; width: 100%; height: 25%; font-size: 23px;" />
         <engine:Button text="Button" name="PlayerResponse2" style="top: 15%; width: 100%; height: 25%; font-size: 23px;" />
         <engine:Button text="Button" name="PlayerResponse3" style="top: 15%; width: 100%; height: 25%; font-size: 23px;" />

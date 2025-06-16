@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isPlayer: 0
   dialogueNPC:
-    characterThatIsSpeaking: {fileID: 0}
+    characterThatIsSpeaking: {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
     message: Hi! How are you?
     emotionToUse: 0
     nextDialogue: {fileID: 11400000, guid: 0dfa4e3b7f9fdb0468c96ec313159178, type: 2}

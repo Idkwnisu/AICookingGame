@@ -4,6 +4,9 @@ public class UITester : MonoBehaviour
 {
     public ShopManager shopManager;
     public DayManager dayManager;
+    public DialogueEventManager dialogueManager;
+
+    public DialogueEvent dialogueToTest;
 
     private void OnGUI()
     {
@@ -16,9 +19,15 @@ public class UITester : MonoBehaviour
         {
             NextPhase();
         }
+        
         if (GUI.Button(new Rect(600, 160, 150, 100), "Next Day"))
         {
             NextDay();
+        }
+        
+        if (GUI.Button(new Rect(1000, 160, 150, 100), "Test Single Dialogue"))
+        {
+            TestDialogue();
         }
 
     }
@@ -36,12 +45,18 @@ public class UITester : MonoBehaviour
 
     public void TestShopManager()
     {
-        shopManager.InitShopUI();
+        shopManager.OpenShopScreen();
         shopManager.ShowUI();
     }
 
     public void DebugShopAction()
     {
 
+    }
+
+    public void TestDialogue()
+    {
+        dialogueManager.OpenDialogueScreen();
+        dialogueManager.StartDialogue(dialogueToTest);
     }
 }

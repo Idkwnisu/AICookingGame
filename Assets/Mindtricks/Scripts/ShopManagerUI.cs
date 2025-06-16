@@ -71,15 +71,13 @@ public class ShopManagerUI : MonoBehaviour
 
     public void HideUI()
     {
-        rootShop.visible = false;
-        rootShop.SetEnabled(false);
+        rootShop.HideAndDisable();
         ResetUIAndIngredients();
     }
 
     public void ShowUI()
     {
-        rootShop.visible = true;
-        rootShop.SetEnabled(true);
+        rootShop.ShowAndEnable();
     }
 
     public void CreateArrays()
@@ -95,8 +93,7 @@ public class ShopManagerUI : MonoBehaviour
         {
             int currentIngredientRow = (i + 1);
             VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + currentIngredientRow + "_Shop");
-            itemRoot.visible = true;
-            itemRoot.SetEnabled(true);
+            itemRoot.ShowAndEnable();
             for (int j = 0; j < rowSize; j++)
             {
                 if (i * rowSize + j < ingredientsToAdd.Count)
@@ -104,8 +101,7 @@ public class ShopManagerUI : MonoBehaviour
                     int currentRow = (j + 1);
                     int currentItemInFullList = i * rowSize + j;
                     Button button = itemRoot.Q<Button>("IngredientButton" + currentIngredientRow + currentRow + "_Shop");
-                    button.visible = true;
-                    button.SetEnabled(true);
+                    button.ShowAndEnable();
                     button.text = ingredientsToAdd[currentItemInFullList].nomeIngrediente;
 
                     button.RegisterCallback<ClickEvent, Ingredient>(ClickEvent, ingredientsToAdd[currentItemInFullList]);
@@ -141,16 +137,14 @@ public class ShopManagerUI : MonoBehaviour
         {
             int currentIngredientRow = (i + 1);
             VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + currentIngredientRow + "_Shop");
-            itemRoot.visible = false;
-            itemRoot.SetEnabled(false);
+            itemRoot.HideAndDisable();
 
             for (int j = 0; j < rowSize; j++)
             {
                 int currentRow = (j + 1);
                 Button button = itemRoot.Q<Button>("IngredientButton" + currentIngredientRow + currentRow + "_Shop");
                 button.style.backgroundColor = normalColor;
-                button.visible = false;
-                button.SetEnabled(false);
+                button.HideAndDisable();
             }
         }
     }

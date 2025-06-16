@@ -156,7 +156,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 768978309}
           m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
-          m_MethodName: InitShopUI
+          m_MethodName: OpenShopScreen
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -213,8 +213,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    toActivate:
-    - {fileID: 328892888}
+    toActivate: []
   - phase: 2
     onEnter:
       m_PersistentCalls:
@@ -246,8 +245,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    toActivate:
-    - {fileID: 777408413}
+    toActivate: []
   - phase: 3
     onEnter:
       m_PersistentCalls:
@@ -279,8 +277,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    toActivate:
-    - {fileID: 1449929469}
+    toActivate: []
   - phase: 4
     onEnter:
       m_PersistentCalls:
@@ -312,8 +309,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    toActivate:
-    - {fileID: 777408413}
+    toActivate: []
   dayStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -876,27 +872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ce689e07812be41b9571ced37df897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requestsInRotation:
-  - Something filling, for a long day of walk
-  - Something spicy and with a strong flavour
-  - Something delicate and light
-  - Something fresh, best for summer
-  - Something warm, best for winter
-  - Something with a weird flavour, surprise me!
-  - Something that reminds me of the mountains
-  - Something meaty and with substance
-  - Something light and ethereal
-  - Something cold, but tasty
-  - Something sweet
-  - Something sweet, but surprising
-  - Something to wake me up
-  - Something to relax me
-  - Something that reminds me of the sea
-  - Something that makes me feel cozy
-  - Something easy to eat and digest
-  - Something vegan
-  - Something tart
-  - Something well rounded
   apiSender: {fileID: 2124823307}
   requestSelected: Something filling and able to sustain for long
   step1: 'Make me a recipe, using only the ingredients provided. The ingredients
@@ -999,45 +974,6 @@ MonoBehaviour:
     \nChili-Crusted Chicken\nRequest\nSomething vegetarian and mild\nSpicy, crispy
     chicken pieces, coated in a fiery chili crust\nScore\n1\n\nOutput:\nWhy would
     you do that, I told you that I don't eat neither meat or spices"
-  requestUpdated:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIDocumentUpdater, Assembly-CSharp
-        m_MethodName: UpdateRequestLabel
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIDocumentUpdater, Assembly-CSharp
-        m_MethodName: UpdateRecipeLabel
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIDocumentUpdater, Assembly-CSharp
-        m_MethodName: UpdateAnswerLabel
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   step1Response:
     m_PersistentCalls:
       m_Calls:
@@ -1345,36 +1281,6 @@ MonoBehaviour:
   selectedColor: {r: 0, g: 0.27450982, b: 0.5568628, a: 1}
   blockedColor: {r: 0, g: 0, b: 0, a: 0}
   numSelection: 5
-  sendingIngredients:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1212902986}
-        m_TargetAssemblyTypeName: RecipeSender, Assembly-CSharp
-        m_MethodName: SendRecipe
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  refresh:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1212902986}
-        m_TargetAssemblyTypeName: RecipeSender, Assembly-CSharp
-        m_MethodName: RerollRequest
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   requestManager: {fileID: 1691976460}
 --- !u!1 &1691976458
 GameObject:
@@ -1423,6 +1329,7 @@ MonoBehaviour:
   IngredientsSelectedList: []
   ingredientManager: {fileID: 1238547411}
   requestManagerUI: {fileID: 1616728616}
+  recipeSender: {fileID: 0}
   requestsInRotation: []
   requestsToUnlock: []
 --- !u!1 &1783074562
@@ -1550,6 +1457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopManager: {fileID: 768978309}
   dayManager: {fileID: 297788842}
+  dialogueManager: {fileID: 2080544167}
+  dialogueToTest: {fileID: 11400000, guid: 80988daac55b7264da62f0a7421fa5e0, type: 2}
 --- !u!4 &1893726853
 Transform:
   m_ObjectHideFlags: 0
@@ -1646,6 +1555,21 @@ MonoBehaviour:
   endlessDialogues: []
   unlockableDialogues: []
   ingredientManager: {fileID: 1238547411}
+  DialoguesAreOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 297788842}
+        m_TargetAssemblyTypeName: DayManager, Assembly-CSharp
+        m_MethodName: NewPhase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   endlessProbability: 0.2
   dialogueManagerUI: {fileID: 1783074564}
 --- !u!1 &2124823306

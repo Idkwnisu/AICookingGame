@@ -39,13 +39,13 @@ public class DialogueManagerUI : MonoBehaviour
         characterDialogueLabel = root.Q<Label>("NPCDialogue");
 
         playerChoicesButtons = new List<Button>();
-        for(int i = 0; i < numOfPlayerChoicesInDialogue; i++)
+        for(int i = 1; i <= numOfPlayerChoicesInDialogue; i++)
         {
             playerChoicesButtons.Add(root.Q<Button>("PlayerResponse" + i));
 
         }
 
-        NPCButtoGoOn = root.Q<Button>("NPCButtoGoOn");
+        NPCButtoGoOn = root.Q<Button>("NPCButtonGoOn");
     }
 
     public void ResetDialogueUI()
@@ -53,25 +53,23 @@ public class DialogueManagerUI : MonoBehaviour
         characterSpeakingLabel.text = "";
 
         characterDialogueLabel.text = "";
-        characterDialogueLabel.SetEnabled(false);
+        characterDialogueLabel.HideAndDisable();
 
         for(int i = 0; i < numOfPlayerChoicesInDialogue; i++)
         {
             playerChoicesButtons[i].text = "";
-            playerChoicesButtons[i].SetEnabled(false);
+            playerChoicesButtons[i].HideAndDisable();
         }
     }
 
     public void HideUI()
     {
-        rootDialogue.visible = false;
-        rootDialogue.SetEnabled(false);
+        rootDialogue.HideAndDisable();
     }
 
     public void ShowUI()
     {
-        rootDialogue.visible = true;
-        rootDialogue.SetEnabled(true);
+        rootDialogue.ShowAndEnable();
     }
 
     public void RegisterCallbacks()
@@ -85,12 +83,12 @@ public class DialogueManagerUI : MonoBehaviour
 
     public void ClickedNPCButton(ClickEvent ev)
     {
-        pressedEnemyGoOn.Invoke();
+        pressedEnemyGoOn?.Invoke();
     }
 
     public void ClickedPlayerButton(ClickEvent ev, int buttonNumber)
     {
-        pressedCharacterChoice.Invoke(buttonNumber);
+        pressedCharacterChoice?.Invoke(buttonNumber);
     }
 
     public void CreateArrays()
@@ -104,19 +102,20 @@ public class DialogueManagerUI : MonoBehaviour
         {
             characterSpeakingLabel.text = "You";
             characterDialogueLabel.text = "";
-            characterDialogueLabel.SetEnabled(false);
+            characterDialogueLabel.HideAndDisable();
+            NPCButtoGoOn.HideAndDisable();
 
             for(int i = 0; i < playerChoicesButtons.Count; i++)
             {
                 if(i < dialogue.playerDialogue.options.Count)
                 {
                     playerChoicesButtons[i].text = dialogue.playerDialogue.options[i];
-                    playerChoicesButtons[i].SetEnabled(true);
+                    playerChoicesButtons[i].ShowAndEnable();
                 }
                 else
                 {
                     playerChoicesButtons[i].text = "";
-                    playerChoicesButtons[i].SetEnabled(false);
+                    playerChoicesButtons[i].HideAndDisable();
                 }
             }
         }
@@ -124,13 +123,15 @@ public class DialogueManagerUI : MonoBehaviour
         {
             characterSpeakingLabel.text = dialogue.dialogueNPC.characterThatIsSpeaking.nomePersonaggio;
             characterDialogueLabel.text = dialogue.dialogueNPC.message;
-            characterDialogueLabel.SetEnabled(true);
+            characterDialogueLabel.ShowAndEnable();
+            NPCButtoGoOn.ShowAndEnable();
+
             characterImage.style.backgroundImage = new StyleBackground(dialogue.dialogueNPC.characterThatIsSpeaking.immaginiEmozion[(int)dialogue.dialogueNPC.emotionToUse]);
 
             for (int i = 0; i < playerChoicesButtons.Count; i++)
             {
                 playerChoicesButtons[i].text = "";
-                playerChoicesButtons[i].SetEnabled(false);
+                playerChoicesButtons[i].HideAndDisable();
             }
         }
     }

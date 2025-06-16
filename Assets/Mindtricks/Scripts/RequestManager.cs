@@ -2,15 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public struct UnlockableRequest
-{
-    public string unlockableRequest;
-    public int numOfIngredientsNeededToUnlock;
-    public List<Ingredient> ingredientsNeededToUnlock;
-}
-
-
 public class RequestManager : MonoBehaviour
 {
     public List<Ingredient> IngredientsSelectedList;
@@ -18,6 +9,8 @@ public class RequestManager : MonoBehaviour
     public IngredientManager ingredientManager;
 
     public RequestManagerUI requestManagerUI;
+
+    public RecipeSender recipeSender;
 
 
     public List<Request> requestsInRotation;
@@ -29,6 +22,20 @@ public class RequestManager : MonoBehaviour
     private void Awake()
     {
         IngredientsSelectedList = new List<Ingredient>();
+        
+    }
+
+    public void SendFullRecipe()
+    {
+        recipeSender.SendRecipe(IngredientsSelectedList);
+        //TO DO qualche reset qui?
+    }
+
+    public void Refresh()
+    {
+        //Check here if it's done for the day
+        requestManagerUI.ResetUIAndIngredients();
+        ExtractRequestAndExecuteIt();
     }
 
     internal void ShowUI()
@@ -116,6 +123,22 @@ public class RequestManager : MonoBehaviour
     {
         requestsToUnlock.Remove(request);
         requestsInRotation.Add(request);
+    }
+
+
+    public Request ExtractRequest()
+    {
+        return requestsInRotation[UnityEngine.Random.Range(0, requestsInRotation.Count)];
+    }
+
+    public void ExtractRequestAndExecuteIt()
+    {
+        ExecuteRequest(ExtractRequest());
+    }
+
+    public void ExecuteRequest(Request request)
+    {
+        requestManagerUI.ShowRequest(request);
     }
 
 }
