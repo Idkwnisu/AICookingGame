@@ -54,8 +54,9 @@ public class DialogueManagerUI : MonoBehaviour
 
         characterDialogueLabel.text = "";
         characterDialogueLabel.HideAndDisable();
+        NPCButtoGoOn.HideAndDisable();
 
-        for(int i = 0; i < numOfPlayerChoicesInDialogue; i++)
+        for (int i = 0; i < numOfPlayerChoicesInDialogue; i++)
         {
             playerChoicesButtons[i].text = "";
             playerChoicesButtons[i].HideAndDisable();

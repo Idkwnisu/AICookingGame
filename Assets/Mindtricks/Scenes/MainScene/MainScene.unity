@@ -362,6 +362,7 @@ Transform:
   m_Children:
   - {fileID: 1616728615}
   - {fileID: 1691976459}
+  - {fileID: 1212902987}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &526347112
@@ -977,9 +978,9 @@ MonoBehaviour:
   step1Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIDocumentUpdater, Assembly-CSharp
-        m_MethodName: UpdateRecipeLabel
+      - m_Target: {fileID: 1691976460}
+        m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
+        m_MethodName: UpdateRecipe
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -995,22 +996,10 @@ MonoBehaviour:
   step3Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIDocumentUpdater, Assembly-CSharp
-        m_MethodName: UpdateAnswerLabel
+      - m_Target: {fileID: 1691976460}
+        m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
+        m_MethodName: UpdateRequestAnswer
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIDocumentUpdater, Assembly-CSharp
-        m_MethodName: ShowButton
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1028,12 +1017,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212902985}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.04342624, y: 0.086722665, z: -0.09813612}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 328892889}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1238547410
 GameObject:
@@ -1329,8 +1318,11 @@ MonoBehaviour:
   IngredientsSelectedList: []
   ingredientManager: {fileID: 1238547411}
   requestManagerUI: {fileID: 1616728616}
-  recipeSender: {fileID: 0}
-  requestsInRotation: []
+  recipeSender: {fileID: 1212902986}
+  requestsInRotation:
+  - {fileID: 11400000, guid: 27d01baa4d4fff54b97964e0bb9084ca, type: 2}
+  - {fileID: 11400000, guid: b4b9c654f24635a4dbf66e5abe723e1d, type: 2}
+  - {fileID: 11400000, guid: 9b9729caabd05a64e9be7f5dfcadb8a0, type: 2}
   requestsToUnlock: []
 --- !u!1 &1783074562
 GameObject:
@@ -1458,6 +1450,7 @@ MonoBehaviour:
   shopManager: {fileID: 768978309}
   dayManager: {fileID: 297788842}
   dialogueManager: {fileID: 2080544167}
+  requestManager: {fileID: 1691976460}
   dialogueToTest: {fileID: 11400000, guid: 80988daac55b7264da62f0a7421fa5e0, type: 2}
 --- !u!4 &1893726853
 Transform:
@@ -1602,7 +1595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=
-  key: AIzaSyDGHscEQlk8udNTb_2qvCUGMgD_YFTusLM
+  key: {fileID: 4900000, guid: 624227cf2bbd0544b9dcb9e9d28dad49, type: 3}
   error:
     m_PersistentCalls:
       m_Calls:
@@ -1674,7 +1667,6 @@ SceneRoots:
   - {fileID: 1581410066}
   - {fileID: 2124823308}
   - {fileID: 526347115}
-  - {fileID: 1212902987}
   - {fileID: 796280045}
   - {fileID: 1449929470}
   - {fileID: 328892889}

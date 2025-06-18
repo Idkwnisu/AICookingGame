@@ -50,7 +50,22 @@ public class APIOllama : APISender
         Debug.Log(m2);
     }
 
-    protected override IEnumerator PostStringCoroutine(string m, Action<string> onSuccess = null, Action<string, string> onFailure = null)
+    public override void PostStringStep1(string m, Action<string> onSuccess, Action<string, string> onFailure = null)
+    {
+        StartCoroutine(PostSimpleStringCoroutine(m, onSuccess, onFailure));
+    }
+
+    public override void PostStringStep2(string m, Action<string> onSuccess, Action<string, string> onFailure = null)
+    {
+        StartCoroutine(PostSimpleStringCoroutine(m, onSuccess, onFailure));
+    }
+
+    public override void PostStringStep3(string m, Action<string> onSuccess, Action<string, string> onFailure = null)
+    {
+        StartCoroutine(PostSimpleStringCoroutine(m, onSuccess, onFailure));
+    }
+
+    protected IEnumerator PostSimpleStringCoroutine(string m, Action<string> onSuccess = null, Action<string, string> onFailure = null)
     {
         input.prompt = m;
 

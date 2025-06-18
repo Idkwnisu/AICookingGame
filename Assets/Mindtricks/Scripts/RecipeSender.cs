@@ -33,12 +33,12 @@ public class RecipeSender : MonoBehaviour
 
     public void SendRecipe(List<Ingredient> ingredients)
     {
-        sending = step1 + "Ingredients \n";
+        sending = step1 + "\n \n Ingredients \n";
         for (int i = 0; i < ingredients.Count; i++)
         {
                 sending = sending + "\n" + ingredients[i].nomeIngrediente + (ingredients[i].descrizione == "" ? "" : "-" + ingredients[i].descrizione);
         }
-        apiSender.PostString(sending, ReceivedResponseStep1);    
+        apiSender.PostStringStep1(sending, ReceivedResponseStep1);    
     }
 
     public void ReceivedResponseStep1(string m)
@@ -52,7 +52,7 @@ public class RecipeSender : MonoBehaviour
     public void SendStep2()
     {
         sending = step2 + "\n" + recipe + "\n Request: \n" + requestSelected;
-        apiSender.PostString(sending, ReceivedResponseStep2);
+        apiSender.PostStringStep2(sending, ReceivedResponseStep2);
     }
 
     public void ReceivedResponseStep2(string m)
@@ -66,7 +66,7 @@ public class RecipeSender : MonoBehaviour
     public void SendStep3()
     {
         sending = step3 + "\n Recipe:" + recipe + "\n Request:" + requestSelected + "\n Score: \n" + score;
-        apiSender.PostString(sending, ReceivedResponseStep3);
+        apiSender.PostStringStep3(sending, ReceivedResponseStep3);
     }
 
     public void ReceivedResponseStep3(string m)

@@ -4,10 +4,7 @@ using UnityEngine;
 
 public abstract class APISender : MonoBehaviour
 {
-    public virtual void PostString(string m, Action<string> onSuccess, Action<string, string> onFailure = null)
-    {
-        StartCoroutine(PostStringCoroutine(m, onSuccess, onFailure));
-    }
-
-    protected abstract IEnumerator PostStringCoroutine(string m, Action<string> onSuccess, Action<string, string> onFailure = null);
+    public abstract void PostStringStep1(string m, Action<string> onSuccess, Action<string, string> onFailure = null);
+    public abstract void PostStringStep2(string m, Action<string> onSuccess, Action<string, string> onFailure = null);
+    public abstract void PostStringStep3(string m, Action<string> onSuccess, Action<string, string> onFailure = null);
 }

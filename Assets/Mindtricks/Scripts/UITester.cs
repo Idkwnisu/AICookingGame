@@ -5,6 +5,7 @@ public class UITester : MonoBehaviour
     public ShopManager shopManager;
     public DayManager dayManager;
     public DialogueEventManager dialogueManager;
+    public RequestManager requestManager;
 
     public DialogueEvent dialogueToTest;
 
@@ -28,6 +29,10 @@ public class UITester : MonoBehaviour
         if (GUI.Button(new Rect(1000, 160, 150, 100), "Test Single Dialogue"))
         {
             TestDialogue();
+        }
+        if (GUI.Button(new Rect(1000, 260, 150, 100), "Test Request Extraction"))
+        {
+            TestRequest();
         }
 
     }
@@ -59,4 +64,11 @@ public class UITester : MonoBehaviour
         dialogueManager.OpenDialogueScreen();
         dialogueManager.StartDialogue(dialogueToTest);
     }
+
+
+    public void TestRequest()
+    {
+        requestManager.ExtractRequestAndExecuteIt();
+    }
+
 }

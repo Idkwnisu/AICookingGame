@@ -51,6 +51,7 @@ public class DialogueEventManager : MonoBehaviour
         }
         else
         {
+            dialogueManagerUI.ResetDialogueUI();
             DialoguesAreOver.Invoke();
         }
     }
@@ -74,6 +75,7 @@ public class DialogueEventManager : MonoBehaviour
 
     public void CloseDialogueScreen()
     {
+        dialogueManagerUI.ResetDialogueUI();
         dialogueManagerUI.HideUI();
     }
     public DialogueEvent ExtractDialogue()

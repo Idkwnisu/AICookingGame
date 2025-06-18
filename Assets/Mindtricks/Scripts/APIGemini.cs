@@ -6,10 +6,13 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Networking;
 
+
+
 [Serializable]
 public struct GeminiInput
 {
     public GeminiParts[] contents;
+    public string generationConfig;
 }
 
 [Serializable]
@@ -22,6 +25,79 @@ public struct GeminiParts
 public struct GeminiText
 {
     public string text;
+}
+
+[Serializable]
+public struct GeminiGenerationConfigStep1
+{
+    public string responseMimeType;
+    public ResponseSchemaStep1 responseSchema;
+}
+
+[Serializable]
+public struct ResponseSchemaStep1
+{
+    public string type;
+    public PropertiesStep1 properties;
+}
+
+
+[Serializable]
+public struct PropertiesStep1
+{
+    public SingleProperty recipeName;
+    public SingleProperty recipeDescription;
+}
+
+
+[Serializable]
+public struct GeminiGenerationConfigStep2
+{
+    public string responseMimeType;
+    public ResponseSchemaStep2 responseSchema;
+}
+
+
+[Serializable]
+public struct ResponseSchemaStep2
+{
+    public string type;
+    public PropertiesStep2 properties;
+}
+
+
+[Serializable]
+public struct PropertiesStep2
+{
+    public SingleProperty score;
+    public SingleProperty motivation;
+}
+
+
+[Serializable]
+public struct GeminiGenerationConfigStep3
+{
+    public string responseMimeType;
+    public ResponseSchemaStep3 responseSchema;
+}
+
+
+[Serializable]
+public struct ResponseSchemaStep3
+{
+    public string type;
+    public PropertiesStep3 properties;
+}
+
+[Serializable]
+public struct PropertiesStep3
+{
+    public SingleProperty answer;
+}
+
+public struct SingleProperty
+{
+    public string type;
 }
 
 [Serializable]
@@ -79,9 +155,11 @@ public class UsageMetadata
 
             public string url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=";
 
-            public string key = "";
+            public TextAsset key;
             GeminiRoot output;
-            GeminiInput input;
+            GeminiInput inputStep1;
+            GeminiInput inputStep2;
+            GeminiInput inputStep3;
             string json;
             UnityWebRequest request;
 
@@ -89,10 +167,49 @@ public class UsageMetadata
 
             private void Awake()
             {
-                input = new GeminiInput();
-                input.contents = new GeminiParts[1];
-                input.contents[0].parts = new GeminiText[1];
-            }
+                inputStep1 = new GeminiInput();
+                inputStep1.contents = new GeminiParts[1];
+                inputStep1.contents[0].parts = new GeminiText[1];
+                GeminiGenerationConfigStep1 geminiStep1 = new GeminiGenerationConfigStep1();
+                geminiStep1.responseMimeType = "application/json";
+                geminiStep1.responseSchema = new ResponseSchemaStep1();
+                geminiStep1.responseSchema.type = "OBJECT";
+                geminiStep1.responseSchema.properties = new PropertiesStep1();
+                geminiStep1.responseSchema.properties.recipeDescription = new SingleProperty();
+                geminiStep1.responseSchema.properties.recipeDescription.type = "STRING";
+                geminiStep1.responseSchema.properties.recipeName = new SingleProperty();
+                geminiStep1.responseSchema.properties.recipeName.type = "STRING";
+                inputStep1.generationConfig = JsonUtility.ToJson(geminiStep1);
+
+
+                inputStep2 = new GeminiInput();
+                inputStep2.contents = new GeminiParts[1];
+                inputStep2.contents[0].parts = new GeminiText[1];
+                GeminiGenerationConfigStep2 geminiStep2 = new GeminiGenerationConfigStep2();
+                geminiStep2.responseMimeType = "application/json";
+                geminiStep2.responseSchema = new ResponseSchemaStep2();
+                geminiStep2.responseSchema.type = "OBJECT";
+                geminiStep2.responseSchema.properties = new PropertiesStep2();
+                geminiStep2.responseSchema.properties.score = new SingleProperty();
+                geminiStep2.responseSchema.properties.score.type = "INTEGER";
+                geminiStep2.responseSchema.properties.motivation = new SingleProperty();
+                geminiStep2.responseSchema.properties.motivation.type = "STRING";
+                inputStep2.generationConfig = JsonUtility.ToJson(geminiStep2);
+
+                inputStep3 = new GeminiInput();
+                inputStep3.contents = new GeminiParts[1];
+                inputStep3.contents[0].parts = new GeminiText[1];
+                GeminiGenerationConfigStep3 geminiStep3 = new GeminiGenerationConfigStep3();
+                geminiStep3.responseSchema = new ResponseSchemaStep3();
+                geminiStep3.responseSchema.type = "OBJECT";
+                geminiStep3.responseSchema.properties = new PropertiesStep3();
+                geminiStep3.responseMimeType = "application/json";
+                geminiStep3.responseSchema.properties.answer = new SingleProperty();
+                geminiStep3.responseSchema.properties.answer.type = "STRING";
+                inputStep3.generationConfig = JsonUtility.ToJson(geminiStep3);
+
+
+    }
 
             public void ErrorDefault(string m1, string m2)
             {
@@ -100,13 +217,32 @@ public class UsageMetadata
                 Debug.Log(m2);
             }
 
-            protected override IEnumerator PostStringCoroutine(string m, Action<string> onSuccess = null, Action<string, string> onFailure = null)
+            public override void PostStringStep1(string m, Action<string> onSuccess, Action<string, string> onFailure = null)
             {
-                input.contents[0].parts[0].text = m;
+                inputStep1.contents[0].parts[0].text = m;
 
-                json = JsonUtility.ToJson(input);
+                json = JsonUtility.ToJson(inputStep1);
+                StartCoroutine(PostStringCoroutine(json, onSuccess, onFailure));
+            }
+            public override void PostStringStep2(string m, Action<string> onSuccess, Action<string, string> onFailure = null)
+            {
+                inputStep2.contents[0].parts[0].text = m;
 
-                request = new UnityWebRequest(url + key, "POST");
+                json = JsonUtility.ToJson(inputStep2);
+                StartCoroutine(PostStringCoroutine(json, onSuccess, onFailure));
+             }
+            public override void PostStringStep3(string m, Action<string> onSuccess, Action<string, string> onFailure = null)
+            {
+                inputStep3.contents[0].parts[0].text = m;
+
+                json = JsonUtility.ToJson(inputStep3);
+                StartCoroutine(PostStringCoroutine(json, onSuccess, onFailure));
+            }
+
+            protected IEnumerator PostStringCoroutine(string m, Action<string> onSuccess = null, Action<string, string> onFailure = null)
+            {
+
+                request = new UnityWebRequest(url + key.text, "POST");
                 request.SetRequestHeader("Content-Type", "application/json");
                 byte[] bodyRaw = Encoding.UTF8.GetBytes(json);
                 request.uploadHandler = (UploadHandler)new UploadHandlerRaw(bodyRaw);

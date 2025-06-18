@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class RequestManager : MonoBehaviour
 {
     public List<Ingredient> IngredientsSelectedList;
@@ -22,7 +23,8 @@ public class RequestManager : MonoBehaviour
     private void Awake()
     {
         IngredientsSelectedList = new List<Ingredient>();
-        
+        requestManagerUI.sendingIngredients += SendFullRecipe;
+        requestManagerUI.refresh += Refresh;
     }
 
     public void SendFullRecipe()
@@ -35,6 +37,7 @@ public class RequestManager : MonoBehaviour
     {
         //Check here if it's done for the day
         requestManagerUI.ResetUIAndIngredients();
+        requestManagerUI.CreateUI(ingredientManager.currentIngredients);
         ExtractRequestAndExecuteIt();
     }
 
@@ -141,4 +144,30 @@ public class RequestManager : MonoBehaviour
         requestManagerUI.ShowRequest(request);
     }
 
+    public void UpdateRecipe(string recipe)
+    {
+        requestManagerUI.UpdateRecipeLabel(recipe);
+    }
+
+    public void UpdateScore(string score)
+    {
+
+    }
+
+    public void UpdateRequestAnswer(string answer)
+    {
+        requestManagerUI.UpdateAnswerLabel(answer);
+    }
+
+    public void UpdateStructuredRecipe(string recipe)
+    {
+        StructuredRecipe structuredRecipe = JsonUtility.FromJson<StructuredRecipe>(recipe);
+        UpdateRecipe(structuredRecipe.name + "\n" + structuredRecipe.description);
+    }
+
+    public void UpdateStructuredRequestAnswer(string answer)
+    {
+        StructuredAnswer structuredAnswer = JsonUtility.FromJson<StructuredAnswer>(answer);
+        UpdateRequestAnswer(structuredAnswer.answer);
+    }
 }
