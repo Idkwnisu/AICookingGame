@@ -876,14 +876,15 @@ MonoBehaviour:
   apiSender: {fileID: 2124823307}
   requestSelected: Something filling and able to sustain for long
   step1: 'Make me a recipe, using only the ingredients provided. The ingredients
-    might be fictional, in that case you will receive a description. Answer in this
-    way:
+    might be fictional, in that case you will receive a description. You will answer
+    with:
 
-    Name
+    Name of the recipe
 
-    Description
+    A single sentence describing the recipe
 
-    Do not write anything else.
+    Do
+    not write anything else.
 
     Example:
 
@@ -899,10 +900,11 @@ MonoBehaviour:
 
     Output:
 
-    Fried
+    recipeName:Fried
     chicken
 
-    Delicious chicken tenders, breaded and fried to perfection'
+    recipeDescription:Delicious chicken tenders, breaded and fried to
+    perfection'
   step2: 'Following there is a dish and a request for a dish, you need to judge how
     good the recipe fits the request, on a scale from 1 to 10. Before outputting
     the number, explain why the recipe is fitting or not.
@@ -980,7 +982,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1691976460}
         m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
-        m_MethodName: UpdateRecipe
+        m_MethodName: UpdateStructuredRecipe
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -998,7 +1000,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1691976460}
         m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
-        m_MethodName: UpdateRequestAnswer
+        m_MethodName: UpdateStructuredRequestAnswer
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

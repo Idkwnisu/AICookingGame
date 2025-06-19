@@ -4,8 +4,8 @@ using System;
 [Serializable]
 public struct StructuredRecipe
 {
-    public string name;
-    public string description;
+    public string recipeName;
+    public string recipeDescription;
 }
 
 [Serializable]

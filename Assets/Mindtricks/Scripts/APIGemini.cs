@@ -9,10 +9,22 @@ using UnityEngine.Networking;
 
 
 [Serializable]
-public struct GeminiInput
+public struct GeminiInputStep1
 {
     public GeminiParts[] contents;
-    public string generationConfig;
+    public GeminiGenerationConfigStep1 generationConfig;
+}
+[Serializable]
+public struct GeminiInputStep2
+{
+    public GeminiParts[] contents;
+    public GeminiGenerationConfigStep2 generationConfig;
+}
+[Serializable]
+public struct GeminiInputStep3
+{
+    public GeminiParts[] contents;
+    public GeminiGenerationConfigStep3 generationConfig;
 }
 
 [Serializable]
@@ -39,6 +51,7 @@ public struct ResponseSchemaStep1
 {
     public string type;
     public PropertiesStep1 properties;
+    public string[] required;
 }
 
 
@@ -63,6 +76,7 @@ public struct ResponseSchemaStep2
 {
     public string type;
     public PropertiesStep2 properties;
+    public string[] required;
 }
 
 
@@ -87,6 +101,7 @@ public struct ResponseSchemaStep3
 {
     public string type;
     public PropertiesStep3 properties;
+    public string[] required;
 }
 
 [Serializable]
@@ -95,6 +110,7 @@ public struct PropertiesStep3
     public SingleProperty answer;
 }
 
+[Serializable]
 public struct SingleProperty
 {
     public string type;
@@ -107,12 +123,12 @@ public class Candidate
     public string finishReason;
     public double avgLogprobs; }
 
-    [Serializable]
-    public class CandidatesTokensDetail
-    {
-        public string modality;
-        public int tokenCount;
-    }
+[Serializable]
+public class CandidatesTokensDetail
+{
+    public string modality;
+    public int tokenCount;
+}
 [Serializable]
 public class Content
 {
@@ -157,9 +173,9 @@ public class UsageMetadata
 
             public TextAsset key;
             GeminiRoot output;
-            GeminiInput inputStep1;
-            GeminiInput inputStep2;
-            GeminiInput inputStep3;
+            GeminiInputStep1 inputStep1;
+            GeminiInputStep2 inputStep2;
+            GeminiInputStep3 inputStep3;
             string json;
             UnityWebRequest request;
 
@@ -167,46 +183,46 @@ public class UsageMetadata
 
             private void Awake()
             {
-                inputStep1 = new GeminiInput();
+                inputStep1 = new GeminiInputStep1();
                 inputStep1.contents = new GeminiParts[1];
                 inputStep1.contents[0].parts = new GeminiText[1];
-                GeminiGenerationConfigStep1 geminiStep1 = new GeminiGenerationConfigStep1();
-                geminiStep1.responseMimeType = "application/json";
-                geminiStep1.responseSchema = new ResponseSchemaStep1();
-                geminiStep1.responseSchema.type = "OBJECT";
-                geminiStep1.responseSchema.properties = new PropertiesStep1();
-                geminiStep1.responseSchema.properties.recipeDescription = new SingleProperty();
-                geminiStep1.responseSchema.properties.recipeDescription.type = "STRING";
-                geminiStep1.responseSchema.properties.recipeName = new SingleProperty();
-                geminiStep1.responseSchema.properties.recipeName.type = "STRING";
-                inputStep1.generationConfig = JsonUtility.ToJson(geminiStep1);
+                inputStep1.generationConfig = new GeminiGenerationConfigStep1();
+                inputStep1.generationConfig.responseMimeType = "application/json";
+                inputStep1.generationConfig.responseSchema = new ResponseSchemaStep1();
+                inputStep1.generationConfig.responseSchema.required = new string[] { "recipeName", "recipeDescription"};
+                inputStep1.generationConfig.responseSchema.type = "OBJECT";
+                inputStep1.generationConfig.responseSchema.properties = new PropertiesStep1();
+                inputStep1.generationConfig.responseSchema.properties.recipeName = new SingleProperty();
+                inputStep1.generationConfig.responseSchema.properties.recipeName.type = "string";
+                inputStep1.generationConfig.responseSchema.properties.recipeDescription = new SingleProperty();
+                inputStep1.generationConfig.responseSchema.properties.recipeDescription.type = "string";
 
 
-                inputStep2 = new GeminiInput();
+                inputStep2 = new GeminiInputStep2();
                 inputStep2.contents = new GeminiParts[1];
                 inputStep2.contents[0].parts = new GeminiText[1];
-                GeminiGenerationConfigStep2 geminiStep2 = new GeminiGenerationConfigStep2();
-                geminiStep2.responseMimeType = "application/json";
-                geminiStep2.responseSchema = new ResponseSchemaStep2();
-                geminiStep2.responseSchema.type = "OBJECT";
-                geminiStep2.responseSchema.properties = new PropertiesStep2();
-                geminiStep2.responseSchema.properties.score = new SingleProperty();
-                geminiStep2.responseSchema.properties.score.type = "INTEGER";
-                geminiStep2.responseSchema.properties.motivation = new SingleProperty();
-                geminiStep2.responseSchema.properties.motivation.type = "STRING";
-                inputStep2.generationConfig = JsonUtility.ToJson(geminiStep2);
+                inputStep2.generationConfig = new GeminiGenerationConfigStep2();
+                inputStep2.generationConfig.responseMimeType = "application/json";
+                inputStep2.generationConfig.responseSchema = new ResponseSchemaStep2();
+                inputStep2.generationConfig.responseSchema.required = new string[] { "score", "motivation" };
+                inputStep2.generationConfig.responseSchema.type = "object";
+                inputStep2.generationConfig.responseSchema.properties = new PropertiesStep2();
+                inputStep2.generationConfig.responseSchema.properties.score = new SingleProperty();
+                inputStep2.generationConfig.responseSchema.properties.score.type = "integer";
+                inputStep2.generationConfig.responseSchema.properties.motivation = new SingleProperty();
+                inputStep2.generationConfig.responseSchema.properties.motivation.type = "string";
 
-                inputStep3 = new GeminiInput();
+                inputStep3 = new GeminiInputStep3();
                 inputStep3.contents = new GeminiParts[1];
                 inputStep3.contents[0].parts = new GeminiText[1];
-                GeminiGenerationConfigStep3 geminiStep3 = new GeminiGenerationConfigStep3();
-                geminiStep3.responseSchema = new ResponseSchemaStep3();
-                geminiStep3.responseSchema.type = "OBJECT";
-                geminiStep3.responseSchema.properties = new PropertiesStep3();
-                geminiStep3.responseMimeType = "application/json";
-                geminiStep3.responseSchema.properties.answer = new SingleProperty();
-                geminiStep3.responseSchema.properties.answer.type = "STRING";
-                inputStep3.generationConfig = JsonUtility.ToJson(geminiStep3);
+                inputStep3.generationConfig = new GeminiGenerationConfigStep3();
+                inputStep3.generationConfig.responseSchema.required = new string[] { "answer"};
+                inputStep3.generationConfig.responseSchema = new ResponseSchemaStep3();
+                inputStep3.generationConfig.responseSchema.type = "object";
+                inputStep3.generationConfig.responseSchema.properties = new PropertiesStep3();
+                inputStep3.generationConfig.responseMimeType = "application/json";
+                inputStep3.generationConfig.responseSchema.properties.answer = new SingleProperty();
+                inputStep3.generationConfig.responseSchema.properties.answer.type = "string";
 
 
     }

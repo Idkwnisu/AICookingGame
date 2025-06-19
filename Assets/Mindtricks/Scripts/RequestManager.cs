@@ -162,7 +162,7 @@ public class RequestManager : MonoBehaviour
     public void UpdateStructuredRecipe(string recipe)
     {
         StructuredRecipe structuredRecipe = JsonUtility.FromJson<StructuredRecipe>(recipe);
-        UpdateRecipe(structuredRecipe.name + "\n" + structuredRecipe.description);
+        UpdateRecipe(structuredRecipe.recipeName + "\n" + structuredRecipe.recipeDescription);
     }
 
     public void UpdateStructuredRequestAnswer(string answer)
