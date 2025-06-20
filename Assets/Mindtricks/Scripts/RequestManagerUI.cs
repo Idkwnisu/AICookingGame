@@ -137,6 +137,8 @@ public class RequestManagerUI : MonoBehaviour
                 button.HideAndDisable();
             }
         }
+        recipeLabel.text = "";
+        answerLabel.text = "";
     }
 
     public void ClickEvent(ClickEvent ce, Ingredient button)

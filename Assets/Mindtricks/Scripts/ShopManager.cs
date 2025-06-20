@@ -8,6 +8,7 @@ public class ShopManager : MonoBehaviour
 {
     public Ingredient ingredientSelected;
 
+    public UnityEvent exitShop;
 
     public List<Ingredient> IngredientsSelectedList;
     public IngredientManager ingredientManager;
@@ -17,6 +18,7 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         IngredientsSelectedList = new List<Ingredient>();
+        shopManagerUI.exitButtonPressed += ExitShop;
     }
 
     internal void ShowUI()
@@ -39,6 +41,10 @@ public class ShopManager : MonoBehaviour
         HideUI();
     }
 
+    public void ExitShop()
+    {
+        exitShop.Invoke();
+    }
     internal void SelectIngredient(Ingredient i)
     {
         ingredientSelected = i;

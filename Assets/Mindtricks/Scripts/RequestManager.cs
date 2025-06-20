@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class RequestManager : MonoBehaviour
 {
@@ -16,29 +16,44 @@ public class RequestManager : MonoBehaviour
 
     public List<Request> requestsInRotation;
     public List<Request> requestsToUnlock;
+    private Request currentRequest;
 
+    private int requestsBeforeGoingOn = 3;
 
-
+    public UnityEvent requestsOver;
 
     private void Awake()
     {
         IngredientsSelectedList = new List<Ingredient>();
         requestManagerUI.sendingIngredients += SendFullRecipe;
-        requestManagerUI.refresh += Refresh;
+        requestManagerUI.refresh += RefreshUI;
+        requestManagerUI.refresh += ExtractNewRequest;
+    }
+
+    public void RefreshRequestsBeforeGoingOn()
+    {
+        //TODO: Random formula based on day here(with a cap)
+        requestsBeforeGoingOn = 3;
     }
 
     public void SendFullRecipe()
     {
-        recipeSender.SendRecipe(IngredientsSelectedList);
-        //TO DO qualche reset qui?
+        recipeSender.SendRecipe(IngredientsSelectedList, currentRequest.requestText);
     }
 
-    public void Refresh()
+    public void RefreshUI()
     {
         //Check here if it's done for the day
         requestManagerUI.ResetUIAndIngredients();
         requestManagerUI.CreateUI(ingredientManager.currentIngredients);
-        ExtractRequestAndExecuteIt();
+    }
+
+    public void ExtractNewRequest()
+    {
+        if (requestsBeforeGoingOn > 0)
+            ExtractRequestAndExecuteIt();
+        else
+            requestsOver.Invoke();
     }
 
     internal void ShowUI()
@@ -51,6 +66,7 @@ public class RequestManager : MonoBehaviour
     }
     public void ShowRequestUI()
     {
+        RefreshUI();
         requestManagerUI.CreateUI(ingredientManager.currentIngredients);
         ShowUI();
     }
@@ -136,11 +152,13 @@ public class RequestManager : MonoBehaviour
 
     public void ExtractRequestAndExecuteIt()
     {
+        requestsBeforeGoingOn--;
         ExecuteRequest(ExtractRequest());
     }
 
     public void ExecuteRequest(Request request)
     {
+        currentRequest = request;
         requestManagerUI.ShowRequest(request);
     }
 

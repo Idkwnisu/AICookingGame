@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -15,7 +16,8 @@ public class ShopManagerUI : MonoBehaviour
     private UIButton buyButton;
     private UIButton buyButtonModal;
     private UIButton infoButton;
-    private UIButton closeButton;
+    private UIButton closeInfoModalButton;
+    private UIButton exitShopButton;
     private Label moneyLabel;
 
     private VisualElement infoPanel;
@@ -34,6 +36,8 @@ public class ShopManagerUI : MonoBehaviour
     private int rowSize = 5;
     private int columnSize = 12;
 
+    public event Action exitButtonPressed;
+
     private void Awake()
     {
         GetUIReferences();
@@ -47,7 +51,8 @@ public class ShopManagerUI : MonoBehaviour
         buyButton.RegisterCallback<ClickEvent>(BuyButtonClicked);
         buyButtonModal.RegisterCallback<ClickEvent>(BuyButtonClicked);
         infoButton.RegisterCallback<ClickEvent>(InfoButtonClicked);
-        closeButton.RegisterCallback<ClickEvent>(CloseButtonClicked);
+        closeInfoModalButton.RegisterCallback<ClickEvent>(CloseButtonClicked);
+        exitShopButton.RegisterCallback<ClickEvent>(ExitButtonClicked);
     }
 
     public void GetUIReferences()
@@ -65,8 +70,9 @@ public class ShopManagerUI : MonoBehaviour
 
         buyButton = root.Q<UIButton>("BuyButton_Shop");
         buyButtonModal = root.Q<UIButton>("BuyButtonModal_Shop");
+        exitShopButton = root.Q<UIButton>("ExitButton_Shop");
         infoButton = root.Q<UIButton>("InfoButton_Shop");
-        closeButton = root.Q<UIButton>("CloseButton_Shop");
+        closeInfoModalButton = root.Q<UIButton>("CloseButton_Shop");
     }
 
     public void HideUI()
@@ -171,6 +177,10 @@ public class ShopManagerUI : MonoBehaviour
     private void CloseButtonClicked(ClickEvent evt)
     {
         CloseInfoModal();
+    }
+    private void ExitButtonClicked(ClickEvent evt)
+    {
+        exitButtonPressed.Invoke();
     }
 
     private void CloseInfoModal()

@@ -9,7 +9,7 @@ public class RecipeSender : MonoBehaviour
 {
     public APISender apiSender;
 
-    public string requestSelected;
+    private string requestSelected;
     [TextArea(11, 25)]
     public string step1; //getting a recipe
     
@@ -31,14 +31,16 @@ public class RecipeSender : MonoBehaviour
     private string score;
     private string response;
 
-    public void SendRecipe(List<Ingredient> ingredients)
+    public void SendRecipe(List<Ingredient> ingredients, string request)
     {
+        requestSelected = request;
         sending = step1 + "\n \n Ingredients \n";
         for (int i = 0; i < ingredients.Count; i++)
         {
                 sending = sending + "\n" + ingredients[i].nomeIngrediente + (ingredients[i].descrizione == "" ? "" : "-" + ingredients[i].descrizione);
         }
         apiSender.PostStringStep1(sending, ReceivedResponseStep1);    
+        
     }
 
     public void ReceivedResponseStep1(string m)

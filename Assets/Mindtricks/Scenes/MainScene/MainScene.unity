@@ -198,6 +198,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1691976460}
+          m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
+          m_MethodName: RefreshRequestsBeforeGoingOn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1691976460}
+          m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
+          m_MethodName: ExtractRequestAndExecuteIt
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onExit:
       m_PersistentCalls:
         m_Calls:
@@ -221,6 +245,18 @@ MonoBehaviour:
         - m_Target: {fileID: 2080544167}
           m_TargetAssemblyTypeName: DialogueEventManager, Assembly-CSharp
           m_MethodName: OpenDialogueScreen
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2080544167}
+          m_TargetAssemblyTypeName: DialogueEventManager, Assembly-CSharp
+          m_MethodName: ExtractDialogueAndStartIt
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -262,6 +298,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1691976460}
+          m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
+          m_MethodName: RefreshRequestsBeforeGoingOn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1691976460}
+          m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
+          m_MethodName: ExtractRequestAndExecuteIt
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
     onExit:
       m_PersistentCalls:
         m_Calls:
@@ -285,6 +345,18 @@ MonoBehaviour:
         - m_Target: {fileID: 2080544167}
           m_TargetAssemblyTypeName: DialogueEventManager, Assembly-CSharp
           m_MethodName: OpenDialogueScreen
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2080544167}
+          m_TargetAssemblyTypeName: DialogueEventManager, Assembly-CSharp
+          m_MethodName: ExtractDialogueAndStartIt
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -603,6 +675,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ingredientSelected: {fileID: 0}
+  exitShop:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 297788842}
+        m_TargetAssemblyTypeName: DayManager, Assembly-CSharp
+        m_MethodName: NewPhase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   IngredientsSelectedList: []
   ingredientManager: {fileID: 1238547411}
   moneyManager: {fileID: 1367461091}
@@ -874,7 +961,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   apiSender: {fileID: 2124823307}
-  requestSelected: Something filling and able to sustain for long
   step1: 'Make me a recipe, using only the ingredients provided. The ingredients
     might be fictional, in that case you will receive a description. You will answer
     with:
@@ -1326,6 +1412,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b4b9c654f24635a4dbf66e5abe723e1d, type: 2}
   - {fileID: 11400000, guid: 9b9729caabd05a64e9be7f5dfcadb8a0, type: 2}
   requestsToUnlock: []
+  requestsOver:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 297788842}
+        m_TargetAssemblyTypeName: DayManager, Assembly-CSharp
+        m_MethodName: NewPhase
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1783074562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,7 +1648,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingDialoguesToDrawFrom: []
   storyDialoguesToDrawFrom: []
-  endlessDialogues: []
+  endlessDialogues:
+  - {fileID: 11400000, guid: 80988daac55b7264da62f0a7421fa5e0, type: 2}
   unlockableDialogues: []
   ingredientManager: {fileID: 1238547411}
   DialoguesAreOver:
