@@ -4,7 +4,7 @@
     <engine:Template name="Event" src="project://database/Assets/Mindtricks/UIToolkit/Screens/Dialogue.uxml?fileID=9197481963319205126&amp;guid=5b8ecc3ce9efcca42971b0ecbdb4bf00&amp;type=3#Dialogue" />
     <engine:Instance template="Shop" name="ShopUI" style="height: 100%; position: absolute; width: 100%;" />
     <engine:Instance template="Requests" name="RequestUI" style="position: absolute; width: 100%; height: 100%;" />
-    <engine:Instance template="Event" name="DialogueUI" style="position: absolute; width: 100%; height: 100%;" />
+    <engine:Instance template="Event" name="DialogueUI" style="position: absolute; width: 100%; height: 100%; top: 0; left: 4px;" />
     <engine:VisualElement name="CurrentDayContainer" style="flex-grow: 1; background-color: rgb(61, 61, 61); width: 10%; height: 15%; position: absolute;">
         <engine:Label text="Current Day" name="CurrentDayLabel" data-source="project://database/Assets/Mindtricks/Objects/Internal/CurrentDayInfo.asset?fileID=11400000&amp;guid=2aee00e1b0a8bd44890257e12a31cf0f&amp;type=2#CurrentDayInfo" data-source-path="currentDay" style="color: rgb(255, 255, 255); font-size: 30px; -unity-text-align: upper-center;" />
         <engine:Label style="font-size: 70px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: upper-center;">
@@ -18,6 +18,15 @@
         <engine:Label text="0" enable-rich-text="true" name="CurrentDayLabelText" style="font-size: 70px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: upper-center;">
             <Bindings>
                 <engine:DataBinding property="text" data-source-path="currentPhase" data-source="project://database/Assets/Mindtricks/Objects/Internal/CurrentDayInfo.asset?fileID=11400000&amp;guid=2aee00e1b0a8bd44890257e12a31cf0f&amp;type=2#CurrentDayInfo" binding-mode="ToTarget" />
+            </Bindings>
+        </engine:Label>
+    </engine:VisualElement>
+    <engine:ToggleButtonGroup label="Toggle Button Group" />
+    <engine:VisualElement name="CurrentMoneyContainer" style="flex-grow: 1; background-color: rgb(61, 61, 61); width: 7%; height: 10%; position: absolute; top: 15%;">
+        <engine:Label text="Money" name="CurrentMoneyLabel" data-source="project://database/Assets/Mindtricks/Objects/Internal/CurrentDayInfo.asset?fileID=11400000&amp;guid=2aee00e1b0a8bd44890257e12a31cf0f&amp;type=2#CurrentDayInfo" data-source-path="currentDay" style="color: rgb(255, 255, 255); font-size: 30px; -unity-text-align: upper-center;" />
+        <engine:Label name="Currentmoney" style="font-size: 70px; color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-align: upper-center;">
+            <Bindings>
+                <engine:DataBinding property="text" data-source="project://database/Assets/Mindtricks/Objects/Internal/FinancialInfos.asset?fileID=11400000&amp;guid=d4e7b9b6f48cb8b4e90586d2c7a597df&amp;type=2#FinancialInfos" binding-mode="ToTarget" data-source-path="currentMoney" />
             </Bindings>
         </engine:Label>
     </engine:VisualElement>

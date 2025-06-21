@@ -22,6 +22,7 @@ public class RecipeSender : MonoBehaviour
     public UnityEvent<string> step1Response;
     public UnityEvent<string> step2Response;
     public UnityEvent<string> step3Response;
+    public UnityEvent error;
 
     string sending;
 
@@ -39,7 +40,7 @@ public class RecipeSender : MonoBehaviour
         {
                 sending = sending + "\n" + ingredients[i].nomeIngrediente + (ingredients[i].descrizione == "" ? "" : "-" + ingredients[i].descrizione);
         }
-        apiSender.PostStringStep1(sending, ReceivedResponseStep1);    
+        apiSender.PostStringStep1(sending, ReceivedResponseStep1, Error);    
         
     }
 
@@ -54,7 +55,7 @@ public class RecipeSender : MonoBehaviour
     public void SendStep2()
     {
         sending = step2 + "\n" + recipe + "\n Request: \n" + requestSelected;
-        apiSender.PostStringStep2(sending, ReceivedResponseStep2);
+        apiSender.PostStringStep2(sending, ReceivedResponseStep2, Error);
     }
 
     public void ReceivedResponseStep2(string m)
@@ -68,12 +69,20 @@ public class RecipeSender : MonoBehaviour
     public void SendStep3()
     {
         sending = step3 + "\n Recipe:" + recipe + "\n Request:" + requestSelected + "\n Score: \n" + score;
-        apiSender.PostStringStep3(sending, ReceivedResponseStep3);
+        apiSender.PostStringStep3(sending, ReceivedResponseStep3, Error);
     }
 
     public void ReceivedResponseStep3(string m)
     {
         Debug.Log("Response received: " + m);
         step3Response.Invoke(m);
+    }
+
+    public void Error(string m1, string m2)
+    {
+        Debug.LogError("Error in connection: ");
+        Debug.LogError(m1);
+        Debug.LogError(m2);
+        error.Invoke();
     }
 }

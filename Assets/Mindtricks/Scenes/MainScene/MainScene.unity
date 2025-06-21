@@ -1080,7 +1080,19 @@ MonoBehaviour:
         m_CallState: 2
   step2Response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1691976460}
+        m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
+        m_MethodName: UpdateStructuredScore
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   step3Response:
     m_PersistentCalls:
       m_Calls:
@@ -1088,6 +1100,33 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
         m_MethodName: UpdateStructuredRequestAnswer
         m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1691976460}
+        m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
+        m_MethodName: ShowSendButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  error:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1691976460}
+        m_TargetAssemblyTypeName: RequestManager, Assembly-CSharp
+        m_MethodName: ShowSendButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1199,7 +1238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4008739f12ab0d459a74fd9cdf93b4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentMoney: 10
+  currentFinancialinfos: {fileID: 11400000, guid: d4e7b9b6f48cb8b4e90586d2c7a597df, type: 2}
 --- !u!4 &1367461092
 Transform:
   m_ObjectHideFlags: 0
@@ -1405,6 +1444,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IngredientsSelectedList: []
   ingredientManager: {fileID: 1238547411}
+  moneyManager: {fileID: 1367461091}
   requestManagerUI: {fileID: 1616728616}
   recipeSender: {fileID: 1212902986}
   requestsInRotation:

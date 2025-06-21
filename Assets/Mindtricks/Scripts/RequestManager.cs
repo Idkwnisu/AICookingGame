@@ -9,6 +9,8 @@ public class RequestManager : MonoBehaviour
 
     public IngredientManager ingredientManager;
 
+    public MoneyManager moneyManager;
+
     public RequestManagerUI requestManagerUI;
 
     public RecipeSender recipeSender;
@@ -21,6 +23,7 @@ public class RequestManager : MonoBehaviour
     private int requestsBeforeGoingOn = 3;
 
     public UnityEvent requestsOver;
+    private int scoreForFullPayment = 7;
 
     private void Awake()
     {
@@ -38,6 +41,7 @@ public class RequestManager : MonoBehaviour
 
     public void SendFullRecipe()
     {
+        requestManagerUI.HideSendButton();
         recipeSender.SendRecipe(IngredientsSelectedList, currentRequest.requestText);
     }
 
@@ -107,6 +111,16 @@ public class RequestManager : MonoBehaviour
         IngredientsSelectedList.Add(i);
     }
 
+    public void HideSendButton()
+    {
+        requestManagerUI.HideSendButton();
+    }
+
+    public void ShowSendButton()
+    {
+        requestManagerUI.ShowSendButton();
+    }
+
     public void UnlockAllNewRequests()
     {
         for (int i = 0; i < requestsToUnlock.Count; i++)
@@ -169,7 +183,31 @@ public class RequestManager : MonoBehaviour
 
     public void UpdateScore(string score)
     {
+        if(int.Parse(score) > scoreForFullPayment)
+        {
+            moneyManager.EarnMoney(currentRequest.payment);
+        }
+        else
+        {
+            moneyManager.EarnMoney(currentRequest.payment / 2);
+        }
+    }
+    public void UpdateScore(int score)
+    {
+        if(score > scoreForFullPayment)
+        {
+            moneyManager.EarnMoney(currentRequest.payment);
+        }
+        else
+        {
+            moneyManager.EarnMoney(currentRequest.payment / 2);
+        }
+    }
 
+    public void UpdateStructuredScore(string score)
+    {
+        StructuredScore structuredScore = JsonUtility.FromJson<StructuredScore>(score);
+        UpdateScore(structuredScore.score);
     }
 
     public void UpdateRequestAnswer(string answer)

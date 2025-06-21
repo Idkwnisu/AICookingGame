@@ -2,24 +2,30 @@ using UnityEngine;
 
 public class MoneyManager : MonoBehaviour
 {
-    public int currentMoney;
-    
+    public FinancialInfos currentFinancialinfos;
+
+    private void Awake()
+    {
+        //Load save here
+        currentFinancialinfos.currentMoney = 10;
+    }
+
     public void EarnMoney(int moneyToEarn)
     {
-        currentMoney += moneyToEarn;
+        currentFinancialinfos.currentMoney += moneyToEarn;
     }
 
     public void SpendMoney(int moneyToSpend)
     {
-        if(moneyToSpend <= currentMoney)
+        if(moneyToSpend <= currentFinancialinfos.currentMoney)
         {
-            currentMoney -= moneyToSpend;
+            currentFinancialinfos.currentMoney -= moneyToSpend;
         }
     }
 
     public bool isMoneyEnough(int moneyToSpend)
     {
-        if(moneyToSpend <= currentMoney)
+        if(moneyToSpend <= currentFinancialinfos.currentMoney)
         {
             return true;
         }
