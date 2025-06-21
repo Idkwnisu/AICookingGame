@@ -108,7 +108,7 @@ public class ShopManagerUI : MonoBehaviour
                     int currentItemInFullList = i * rowSize + j;
                     Button button = itemRoot.Q<Button>("IngredientButton" + currentIngredientRow + currentRow + "_Shop");
                     button.ShowAndEnable();
-                    button.text = ingredientsToAdd[currentItemInFullList].nomeIngrediente;
+                    button.text = ingredientsToAdd[currentItemInFullList].costo + "\n" + ingredientsToAdd[currentItemInFullList].nomeIngrediente;
 
                     button.RegisterCallback<ClickEvent, Ingredient>(ClickEvent, ingredientsToAdd[currentItemInFullList]);
                     allIngredients.Add(ingredientsToAdd[currentItemInFullList], button);

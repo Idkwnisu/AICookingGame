@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-public enum UnlockableDialogueType { STORY, RANDOM, ENDLESS }
+public enum UnlockableDialogueType { STORY, RANDOM, ENDLESS, NIGHT }
 
 [Serializable]
 public struct UnlockableDialogue
@@ -26,6 +26,7 @@ public class DialogueEventManager : MonoBehaviour
 {
     public List<DialogueEvent> regularDialoguesToDrawFrom;
     public List<DialogueEvent> storyDialoguesToDrawFrom;
+    public List<DialogueEvent> nightDialoguesToDrawFrom;
     public List<DialogueEvent> endlessDialogues;
     public List<DialogueEvent> completedDialogues;
     public List<UnlockableDialogue> unlockableDialogues;
@@ -66,6 +67,10 @@ public class DialogueEventManager : MonoBehaviour
                 else if(unlockableDialogues[i].type == UnlockableDialogueType.RANDOM)
                 {
                     CompleteRegularDialogue(unlockableDialogues[i].unlockable);
+                }
+                else if(unlockableDialogues[i].type == UnlockableDialogueType.NIGHT)
+                {
+                    CompleteNightDialogue(unlockableDialogues[i].unlockable);
                 }
                 else
                 {
@@ -126,6 +131,14 @@ public class DialogueEventManager : MonoBehaviour
         }
     }
 
+    public void ExtractNightDialogueAndStartIt()
+    {
+        if (nightDialoguesToDrawFrom.Count != 0)
+        {
+            StartDialogue(nightDialoguesToDrawFrom[UnityEngine.Random.Range(0, nightDialoguesToDrawFrom.Count)]);
+        }
+    }
+
     public void ExtractDialogueAndStartIt()
     {
         StartDialogue(ExtractDialogue());
@@ -181,6 +194,9 @@ public class DialogueEventManager : MonoBehaviour
             case UnlockableDialogueType.ENDLESS:
                 endlessDialogues.Add(dialogue.unlockable);
                 break;
+            case UnlockableDialogueType.NIGHT:
+                nightDialoguesToDrawFrom.Add(dialogue.unlockable);
+                break;
         }
         dialoguesUnlocked.Add(dialogue.unlockable.id);
         regularDialoguesToDrawFrom.Add(dialogue.unlockable);
@@ -200,6 +216,17 @@ public class DialogueEventManager : MonoBehaviour
     {
         completedDialogues.Add(dialogue);
         regularDialoguesToDrawFrom.Remove(dialogue);
+        if(dialoguesUnlocked.Contains(dialogue.id))
+        {
+            dialoguesUnlocked.Remove(dialogue.id);
+        }
+        dialoguesRemoved.Add(dialogue.id);
+    }
+    
+    public void CompleteNightDialogue(DialogueEvent dialogue)
+    {
+        completedDialogues.Add(dialogue);
+        nightDialoguesToDrawFrom.Remove(dialogue);
         if(dialoguesUnlocked.Contains(dialogue.id))
         {
             dialoguesUnlocked.Remove(dialogue.id);
