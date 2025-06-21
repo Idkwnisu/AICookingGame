@@ -24,9 +24,10 @@ public struct SpecificDialogue
 
 public class DialogueEventManager : MonoBehaviour
 {
-    public List<DialogueEvent> startingDialoguesToDrawFrom;
+    public List<DialogueEvent> regularDialoguesToDrawFrom;
     public List<DialogueEvent> storyDialoguesToDrawFrom;
     public List<DialogueEvent> endlessDialogues;
+    public List<DialogueEvent> completedDialogues;
     public List<UnlockableDialogue> unlockableDialogues;
     public IngredientManager ingredientManager;
     public UnityEvent DialoguesAreOver;
@@ -36,11 +37,42 @@ public class DialogueEventManager : MonoBehaviour
 
     private DialogueEvent currentEvent;
 
+    private List<int> dialoguesUnlocked;
+    private List<int> dialoguesRemoved;
+
 
     private void Start()
     {
         dialogueManagerUI.pressedEnemyGoOn += ClickedNPCGoOnButton;
         dialogueManagerUI.pressedCharacterChoice += ClickedPlayerChoiceButton;
+    }
+
+
+    internal void UnlockAndRemoveDialogues(List<int> dialoguesUnlocked, List<int> dialoguesRemoved)
+    {
+        for (int i = 0; i < unlockableDialogues.Count; i++)
+        {
+            if(dialoguesUnlocked.Contains(unlockableDialogues[i].unlockable.id))
+            {
+                UnlockDialogue(unlockableDialogues[i]);
+                dialoguesUnlocked.Add(i);
+            }
+            if(dialoguesRemoved.Contains(unlockableDialogues[i].unlockable.id))
+            {
+                if(unlockableDialogues[i].type == UnlockableDialogueType.STORY)
+                {
+                    CompleteStoryDialogue(unlockableDialogues[i].unlockable);
+                }
+                else if(unlockableDialogues[i].type == UnlockableDialogueType.RANDOM)
+                {
+                    CompleteRegularDialogue(unlockableDialogues[i].unlockable);
+                }
+                else
+                {
+                    Debug.LogError("ERROR: ENDLESS DIALOGUE IS COMPLETED, THIS IS NOT PERMITTED");
+                }
+            }
+        }
     }
 
     public void ClickedNPCGoOnButton()
@@ -84,9 +116,9 @@ public class DialogueEventManager : MonoBehaviour
         {
             return storyDialoguesToDrawFrom[UnityEngine.Random.Range(0, storyDialoguesToDrawFrom.Count)];
         }
-        else if(startingDialoguesToDrawFrom.Count != 0 && UnityEngine.Random.Range(0.0f, 1.0f) > endlessProbability)
+        else if(regularDialoguesToDrawFrom.Count != 0 && UnityEngine.Random.Range(0.0f, 1.0f) > endlessProbability)
         {
-            return startingDialoguesToDrawFrom[UnityEngine.Random.Range(0, startingDialoguesToDrawFrom.Count)];
+            return regularDialoguesToDrawFrom[UnityEngine.Random.Range(0, regularDialoguesToDrawFrom.Count)];
         }
         else
         {
@@ -144,14 +176,43 @@ public class DialogueEventManager : MonoBehaviour
                 storyDialoguesToDrawFrom.Add(dialogue.unlockable);
                 break;
             case UnlockableDialogueType.RANDOM:
-                startingDialoguesToDrawFrom.Add(dialogue.unlockable);
+                regularDialoguesToDrawFrom.Add(dialogue.unlockable);
                 break;
             case UnlockableDialogueType.ENDLESS:
                 endlessDialogues.Add(dialogue.unlockable);
                 break;
         }
-        startingDialoguesToDrawFrom.Add(dialogue.unlockable);
+        dialoguesUnlocked.Add(dialogue.unlockable.id);
+        regularDialoguesToDrawFrom.Add(dialogue.unlockable);
     }
 
+    public void CompleteStoryDialogue(DialogueEvent dialogue)
+    {
+        completedDialogues.Add(dialogue);
+        storyDialoguesToDrawFrom.Remove(dialogue);
+        if(dialoguesUnlocked.Contains(dialogue.id))
+        {
+            dialoguesUnlocked.Remove(dialogue.id);
+        }
+        dialoguesRemoved.Add(dialogue.id);
+    }
+    public void CompleteRegularDialogue(DialogueEvent dialogue)
+    {
+        completedDialogues.Add(dialogue);
+        regularDialoguesToDrawFrom.Remove(dialogue);
+        if(dialoguesUnlocked.Contains(dialogue.id))
+        {
+            dialoguesUnlocked.Remove(dialogue.id);
+        }
+        dialoguesRemoved.Add(dialogue.id);
+    }
 
+    public List<int> GetDialoguesUnlocked()
+    {
+        return dialoguesUnlocked;
+    }
+    public List<int> GetDialoguesRemoved()
+    {
+        return dialoguesRemoved;
+    }
 }

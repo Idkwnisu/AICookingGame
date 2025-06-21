@@ -36,6 +36,7 @@ public class PlayerDialogue : BaseDialogue
 [CreateAssetMenu(fileName = "DialogueEvent", menuName = "Scriptable Objects/Dialogue Event")]
 public class DialogueEvent : ScriptableObject
 {
+    public int id;
     public bool isPlayer;
     public NPCDialogue dialogueNPC;
     public PlayerDialogue playerDialogue;

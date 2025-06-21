@@ -1,9 +1,11 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
 public struct UnlockIngredients
 {
+    public int id;
     public List<Ingredient> ingredientsUnlocked;
     public List<Ingredient> ingredientsNeededToUnlock;
     public int numOfIngredientsNeededToUnlock;
@@ -20,6 +22,8 @@ public class IngredientManager : MonoBehaviour
     public ShopManager shopManager;
 
     public UnityEvent IngredientsHaveChanged_Event;
+
+    public List<int> unlocked;
 
     public void UnlockAllNewIngredients()
     {
@@ -38,13 +42,19 @@ public class IngredientManager : MonoBehaviour
 
             if (unlockable)
             {
-                for(int j = 0; j < ingredientsToUnlockInTheShop[i].ingredientsUnlocked.Count; j++)
-                {
-                    UnlockIngredient(ingredientsToUnlockInTheShop[i].ingredientsUnlocked[j]);
-                }
+                UnlockAllIngredientsFromASingleUnlockable(i);
             }
         }
 
+    }
+
+    public void UnlockAllIngredientsFromASingleUnlockable(int index)
+    {
+        unlocked.Add(index);
+        for (int j = 0; j < ingredientsToUnlockInTheShop[index].ingredientsUnlocked.Count; j++)
+        {
+            UnlockIngredient(ingredientsToUnlockInTheShop[index].ingredientsUnlocked[j]);
+        }
     }
 
     public void UnlockIngredient(Ingredient ingredientToUnlock)
@@ -55,5 +65,22 @@ public class IngredientManager : MonoBehaviour
             currentIngredients.Add(ingredientToUnlock);
             IngredientsHaveChanged_Event.Invoke();
         }
-    }    
+    }
+
+
+    public List<int> GetIngredientsUnlocked()
+    {
+        return unlocked;
+    }
+
+    public void UnlockIngredients(List<int> idIngredients)
+    {
+        for(int i = 0; i < ingredientsToUnlockInTheShop.Count; i++)
+        {
+            if(idIngredients.Contains(ingredientsToUnlockInTheShop[i].id))
+            {
+                UnlockAllIngredientsFromASingleUnlockable(ingredientsToUnlockInTheShop[i].id);
+            }
+        }
+    }
 }

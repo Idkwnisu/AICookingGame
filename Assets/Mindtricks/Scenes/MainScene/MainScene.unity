@@ -1194,6 +1194,7 @@ MonoBehaviour:
   IngredientsHaveChanged_Event:
     m_PersistentCalls:
       m_Calls: []
+  unlocked: 
 --- !u!4 &1238547412
 Transform:
   m_ObjectHideFlags: 0
@@ -1577,7 +1578,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1893726852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1686,10 +1687,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969146441e0e96043a116a12387ad79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingDialoguesToDrawFrom: []
+  regularDialoguesToDrawFrom: []
   storyDialoguesToDrawFrom: []
   endlessDialogues:
   - {fileID: 11400000, guid: 80988daac55b7264da62f0a7421fa5e0, type: 2}
+  completedDialogues: []
   unlockableDialogues: []
   ingredientManager: {fileID: 1238547411}
   DialoguesAreOver:

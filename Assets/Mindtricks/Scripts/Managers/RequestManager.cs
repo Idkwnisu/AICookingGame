@@ -60,6 +60,28 @@ public class RequestManager : MonoBehaviour
             requestsOver.Invoke();
     }
 
+    internal void UnlockRequests(List<int> requestsUnlocked)
+    {
+        for(int i = 0; i <requestsToUnlock.Count; i++)
+        {
+            if(requestsUnlocked.Contains(requestsToUnlock[i].id))
+            {
+                UnlockRequest(requestsToUnlock[i]);
+            }
+        }
+    }
+
+
+    internal List<int> GetRequestsUnlocked()
+    {
+        List<int> requestsUnlocked = new List<int>();
+        for (int i = 0; i < requestsInRotation.Count; i++)
+        {
+            requestsUnlocked.Add(requestsInRotation[i].id);
+        }
+        return requestsUnlocked;
+    }
+
     internal void ShowUI()
     {
         requestManagerUI.ShowUI();
