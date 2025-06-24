@@ -7,6 +7,7 @@ public class Request : ScriptableObject
     public int id;
     public string requestText;
     public int payment;
+    public List<Character> charactersThatCanMakeTheRequest;
     public List<Ingredient> ingredientsNeededToUnlock;
     public int numOfIngredientsNeededToUnlock;
 }

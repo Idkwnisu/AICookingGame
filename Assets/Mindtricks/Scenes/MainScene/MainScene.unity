@@ -1458,7 +1458,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 27d01baa4d4fff54b97964e0bb9084ca, type: 2}
   - {fileID: 11400000, guid: b4b9c654f24635a4dbf66e5abe723e1d, type: 2}
   - {fileID: 11400000, guid: 9b9729caabd05a64e9be7f5dfcadb8a0, type: 2}
-  requestsToUnlock: []
+  requestsToUnlock:
+  - {fileID: 0}
   requestsOver:
     m_PersistentCalls:
       m_Calls:
