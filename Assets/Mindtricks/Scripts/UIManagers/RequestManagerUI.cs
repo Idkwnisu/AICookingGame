@@ -11,6 +11,7 @@ public class RequestManagerUI : MonoBehaviour
 {
     VisualElement root;
     VisualElement rootRequest;
+    VisualElement characterVisuals;
     public UIDocument uiDocument;
     public Button templateButton;
     public VisualElement templateRow;
@@ -47,6 +48,7 @@ public class RequestManagerUI : MonoBehaviour
     {
         root = uiDocument.rootVisualElement;
         rootRequest = root.Q<VisualElement>("RequestUI");
+        characterVisuals = root.Q<VisualElement>("CharacterVisuals");
 
         requestLabel = root.Q<Label>("RequestLabel_Requests");
         answerLabel = root.Q<Label>("AnswerLabel_Requests");
@@ -119,13 +121,15 @@ public class RequestManagerUI : MonoBehaviour
 
     }
 
-    public void ShowRequest(Request request)
+    public void ShowRequest(Request request, Character characterToShow)
     {
         requestLabel.text = request.requestText;
+        characterVisuals.style.backgroundImage = new StyleBackground(characterToShow.immaginiEmozion[0]);
     }
 
     public void ResetUIAndIngredients()
     {
+        characterVisuals.style.backgroundImage = new StyleBackground();
         allIngredients?.Clear();
         for (int i = 0; i < columnSize; i++)
         {

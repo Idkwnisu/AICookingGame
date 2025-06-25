@@ -5,5 +5,6 @@ public enum Emotion { NORMAL, ANGRY, SAD, SUSPICIOUS }
 public class Character : ScriptableObject
 {
     public string nomePersonaggio;
+    public string personalita;
     public Sprite[] immaginiEmozion;
 }

@@ -19,6 +19,7 @@ public class RequestManager : MonoBehaviour
     public List<Request> requestsInRotation;
     public List<Request> requestsToUnlock;
     private Request currentRequest;
+    private Character currentCharacterRequest;
 
     private int requestsBeforeGoingOn = 3;
 
@@ -42,7 +43,7 @@ public class RequestManager : MonoBehaviour
     public void SendFullRecipe()
     {
         requestManagerUI.HideSendButton();
-        recipeSender.SendRecipe(IngredientsSelectedList, currentRequest.requestText);
+        recipeSender.SendRecipe(IngredientsSelectedList, currentRequest.requestText, currentCharacterRequest.personalita);
     }
 
     public void RefreshUI()
@@ -195,7 +196,8 @@ public class RequestManager : MonoBehaviour
     public void ExecuteRequest(Request request)
     {
         currentRequest = request;
-        requestManagerUI.ShowRequest(request);
+        currentCharacterRequest = request.charactersThatCanMakeTheRequest[UnityEngine.Random.Range(0, request.charactersThatCanMakeTheRequest.Count)];
+        requestManagerUI.ShowRequest(request, currentCharacterRequest);
     }
 
     public void UpdateRecipe(string recipe)

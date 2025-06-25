@@ -10,6 +10,7 @@ public class RecipeSender : MonoBehaviour
     public APISender apiSender;
 
     private string requestSelected;
+    private string characterPersonality;
     [TextArea(11, 25)]
     public string step1; //getting a recipe
     
@@ -32,8 +33,9 @@ public class RecipeSender : MonoBehaviour
     private string score;
     private string response;
 
-    public void SendRecipe(List<Ingredient> ingredients, string request)
+    public void SendRecipe(List<Ingredient> ingredients, string request, string characterPersonalityToUse)
     {
+        characterPersonality = characterPersonalityToUse;
         requestSelected = request;
         sending = step1 + "\n \n Ingredients \n";
         for (int i = 0; i < ingredients.Count; i++)
@@ -68,7 +70,7 @@ public class RecipeSender : MonoBehaviour
 
     public void SendStep3()
     {
-        sending = step3 + "\n Recipe:" + recipe + "\n Request:" + requestSelected + "\n Score: \n" + score;
+        sending = step3 + "\n Recipe:" + recipe + "\n Request:" + requestSelected + "\n Score: \n" + score + "\n" + characterPersonality;
         apiSender.PostStringStep3(sending, ReceivedResponseStep3, Error);
     }
 
