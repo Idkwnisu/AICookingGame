@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[Serializable]
 public struct UnlockIngredients
 {
+    public string name;
     public int id;
     public List<Ingredient> ingredientsUnlocked;
     public List<Ingredient> ingredientsNeededToUnlock;
