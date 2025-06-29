@@ -1318,6 +1318,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: cfa8404430ede9945accf5560c803c8f, type: 2}
     - {fileID: 11400000, guid: 5d06339e44601e04ea940657907757e2, type: 2}
     - {fileID: 11400000, guid: 9a526d38bbdbe63479ff37b1d155395d, type: 2}
+    - {fileID: 11400000, guid: ee3a1630da0d3f24e8687eadf7a77d25, type: 2}
     ingredientsNeededToUnlock:
     - {fileID: 11400000, guid: d21f173a1e2684b42b8a728594410e7c, type: 2}
     - {fileID: 11400000, guid: 1e24269f3f8547b47bed9cb16fce07cf, type: 2}
