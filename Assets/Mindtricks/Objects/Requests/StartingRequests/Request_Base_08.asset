@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 742e115030bee534dbb38d322f37326e, type: 3}
-  m_Name: Request03_Fresh
+  m_Name: Request_Base_08
   m_EditorClassIdentifier: 
-  requestText: Something fresh and cooling
+  id: 8
+  requestText: "I\u2019m not hungry right now, make me something light! "
   payment: 10
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock: []
   numOfIngredientsNeededToUnlock: 0

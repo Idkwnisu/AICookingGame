@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 742e115030bee534dbb38d322f37326e, type: 3}
-  m_Name: Request01_Spicy
+  m_Name: Unlocking_Request_31
   m_EditorClassIdentifier: 
-  requestText: Something spicy, with a kick to it!
-  payment: 10
-  ingredientsNeededToUnlock: []
+  id: 42
+  requestText: 'I want something with some protein in it, but make it tasty '
+  payment: 18
+  charactersThatCanMakeTheRequest: []
+  ingredientsNeededToUnlock:
+  - {fileID: 11400000, guid: 5d0d0a3802d81be4b96645a832d954c1, type: 2}
   numOfIngredientsNeededToUnlock: 0
