@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 116
   requestText: 'I want something with proteins, but without meat '
   payment: 40
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: deaf3a11fcbd6da409a4391dc6e9b0ec, type: 2}
   numOfIngredientsNeededToUnlock: 0

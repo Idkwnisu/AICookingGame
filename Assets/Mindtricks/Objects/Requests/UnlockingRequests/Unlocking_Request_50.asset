@@ -16,7 +16,8 @@ MonoBehaviour:
   requestText: "I haven\u2019t eaten milk in a while, can you make me something with
     it? "
   payment: 30
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: c8f5c13c5a3dba64699aaa6977d4f9b2, type: 2}
   numOfIngredientsNeededToUnlock: 0

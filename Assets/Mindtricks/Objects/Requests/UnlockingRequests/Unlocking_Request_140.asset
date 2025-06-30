@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742e115030bee534dbb38d322f37326e, type: 3}
+  m_Name: Unlocking_Request_140
+  m_EditorClassIdentifier: 
+  id: 150
+  requestText: "I\u2019ve heard of some seeds so good that they make you fly, I want
+    to try them! "
+  payment: 100
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
+  ingredientsNeededToUnlock:
+  - {fileID: 11400000, guid: 935d3ea70b4878543b3ca84283969a67, type: 2}
+  numOfIngredientsNeededToUnlock: 0

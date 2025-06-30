@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 30
   requestText: "I feel a bit down today, why don\u2019t you give me something sweet? "
   payment: 25
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: bbff538c2a050214f89c25a3c01c971e, type: 2}
   numOfIngredientsNeededToUnlock: 0

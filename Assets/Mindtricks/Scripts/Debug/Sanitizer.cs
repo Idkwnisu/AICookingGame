@@ -1,9 +1,12 @@
 using UnityEngine;
 
-public class DialogueDebugger : MonoBehaviour
+public class Sanitizer : MonoBehaviour
 {
     [SerializeField]
-    public DialogueEvent toDebug;
+    public DialogueEvent dialogueToDebug;
+    
+    [SerializeField]
+    public Request[] requestsToDebug;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

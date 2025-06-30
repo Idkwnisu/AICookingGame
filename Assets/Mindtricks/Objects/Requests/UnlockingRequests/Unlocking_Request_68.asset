@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 77
   requestText: 'Give me something with fruits from the forest '
   payment: 20
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 4df5105a4ba2c424e927916e43898a56, type: 2}
   numOfIngredientsNeededToUnlock: 0

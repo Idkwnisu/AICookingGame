@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 97
   requestText: 'I want some squash in my life! '
   payment: 25
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: c7ae11bb83790774ea3a29dcd9f9e3d0, type: 2}
   numOfIngredientsNeededToUnlock: 0

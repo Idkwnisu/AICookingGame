@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 86
   requestText: 'Can you make me some usual and comforting food? '
   payment: 14
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 8bce56e850ffd184789a4627885b7147, type: 2}
   numOfIngredientsNeededToUnlock: 0

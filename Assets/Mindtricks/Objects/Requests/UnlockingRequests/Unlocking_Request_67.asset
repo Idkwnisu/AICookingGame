@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 76
   requestText: 'I want to taste some wild berries with your dish '
   payment: 20
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 25ac338985c9db34d990daae995cd64f, type: 2}
   numOfIngredientsNeededToUnlock: 0

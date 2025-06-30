@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 107
   requestText: 'I want something with sesame seeds, they are really good '
   payment: 30
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 6ba71f29b1323bb45ad3d78a30042421, type: 2}
   numOfIngredientsNeededToUnlock: 0

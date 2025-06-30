@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 108
   requestText: I already know the dish I want! I can Almond taste it! Ehehehe
   payment: 30
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: c3592274c7da7264ebebec82e486e7f2, type: 2}
   numOfIngredientsNeededToUnlock: 0

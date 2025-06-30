@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 103
   requestText: I want something with a scream to it
   payment: 70
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: df4303277f81c724e8f0ac45f526c858, type: 2}
   numOfIngredientsNeededToUnlock: 0

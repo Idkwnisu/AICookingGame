@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 32
   requestText: 'I want something buttery and delicious! '
   payment: 30
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: cf23d55aa781e2947b92d4bf9b7579cc, type: 2}
   numOfIngredientsNeededToUnlock: 0

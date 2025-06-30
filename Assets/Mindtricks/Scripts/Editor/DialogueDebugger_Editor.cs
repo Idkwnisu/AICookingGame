@@ -2,17 +2,20 @@ using UnityEngine;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
 using UnityEditor;
+using System.Collections.Generic;
 
-[CustomEditor(typeof(DialogueDebugger))]
+[CustomEditor(typeof(Sanitizer))]
 public class DialogueDebugger_Editor : Editor
 {
-    SerializedProperty toDebug;
+    SerializedProperty dialogueToDebug;
+    SerializedProperty requestsToDebug;
 
     private string debug = "";
 
     private void OnEnable()
     {
-        toDebug = serializedObject.FindProperty("toDebug");
+        dialogueToDebug = serializedObject.FindProperty("dialogueToDebug");
+        requestsToDebug = serializedObject.FindProperty("requestsToDebug");
     }
 
     public override void OnInspectorGUI()
@@ -24,12 +27,18 @@ public class DialogueDebugger_Editor : Editor
         // Draw the property field
 
         EditorGUI.BeginChangeCheck();
-        EditorGUILayout.PropertyField(toDebug);
+        EditorGUILayout.PropertyField(dialogueToDebug);
         if(EditorGUI.EndChangeCheck())
         {
             debug = "";
-            CheckValidity((DialogueEvent)toDebug.objectReferenceValue);
-            PrintDialogue((DialogueEvent)toDebug.objectReferenceValue, 0);
+            CheckValidity((DialogueEvent)dialogueToDebug.objectReferenceValue);
+            PrintDialogue((DialogueEvent)dialogueToDebug.objectReferenceValue, 0);
+        }
+        EditorGUI.BeginChangeCheck();
+        EditorGUILayout.PropertyField(requestsToDebug);
+        if(EditorGUI.EndChangeCheck())
+        {
+            CheckRequestIndexes(requestsToDebug);
         }
 
         EditorGUILayout.Separator();
@@ -94,6 +103,19 @@ public class DialogueDebugger_Editor : Editor
             if(eventToCheck.dialogueNPC.nextDialogue != null)
             {
                 CheckValidity(eventToCheck.dialogueNPC.nextDialogue);
+            }
+        }
+    }
+
+    public void CheckRequestIndexes(SerializedProperty requestsToCheck)
+    {
+        HashSet<int> idHasSets = new HashSet<int>();
+        for(int i = 0; i < requestsToCheck.arraySize; i++)
+        {
+            Request toCheck = ((Request)requestsToCheck.GetArrayElementAtIndex(i).objectReferenceValue);
+            if (!idHasSets.Add((toCheck.id)))
+            {
+                Debug.LogError($"Duplicate ID at: {toCheck.name}");
             }
         }
     }

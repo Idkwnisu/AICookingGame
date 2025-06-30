@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 113
   requestText: 'I want something nutty and delicious '
   payment: 32
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: b6132b889a6de784dbde196a0883df23, type: 2}
   numOfIngredientsNeededToUnlock: 0

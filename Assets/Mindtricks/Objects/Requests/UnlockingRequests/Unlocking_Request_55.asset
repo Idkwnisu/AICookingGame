@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 65
   requestText: I want to taste the sea! But make it vegetarian please
   payment: 25
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 9a526d38bbdbe63479ff37b1d155395d, type: 2}
   numOfIngredientsNeededToUnlock: 0

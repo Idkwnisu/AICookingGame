@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 742e115030bee534dbb38d322f37326e, type: 3}
   m_Name: Unlocking_Request_94
   m_EditorClassIdentifier: 
-  id: 102
+  id: 123
   requestText: 'I want something extra healthy that will give me strength '
   payment: 60
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 2fffbb28be9a27f478c0845d78d07c15, type: 2}
   numOfIngredientsNeededToUnlock: 0

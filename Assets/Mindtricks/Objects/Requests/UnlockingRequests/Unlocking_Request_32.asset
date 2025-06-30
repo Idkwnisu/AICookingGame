@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 43
   requestText: 'Give me a meal with a lot of proteins, and some fat in it '
   payment: 18
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: da760a9194ef494459f3b07a9659bcd0, type: 2}
   numOfIngredientsNeededToUnlock: 0

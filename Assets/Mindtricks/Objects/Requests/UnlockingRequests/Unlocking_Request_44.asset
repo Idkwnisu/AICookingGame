@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 55
   requestText: 'I want something creamy, but very healthy and nutritious! '
   payment: 20
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 665b96a5aecf1b84aa9443ddb84320e8, type: 2}
   numOfIngredientsNeededToUnlock: 0

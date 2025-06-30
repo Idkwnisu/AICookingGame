@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 68
   requestText: 'Surprise me! But make it seafood based, I like that '
   payment: 35
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 975d8ccd5ec2ccd498973480fe36834a, type: 2}
   numOfIngredientsNeededToUnlock: 0

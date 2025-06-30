@@ -16,7 +16,8 @@ MonoBehaviour:
   requestText: "I\u2019ve heard you have some peculiar ingredients! I want to eat
     something that was very dangerous! "
   payment: 50
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 2e8de5bde3e89034284946c6fdb7a9bc, type: 2}
   numOfIngredientsNeededToUnlock: 0

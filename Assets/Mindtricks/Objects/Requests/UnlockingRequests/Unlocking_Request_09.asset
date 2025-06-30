@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 20
   requestText: 'I want something with a bit of heat in it! '
   payment: 30
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 7f5c370f6d0de424c90ae547e01298b9, type: 2}
   numOfIngredientsNeededToUnlock: 0

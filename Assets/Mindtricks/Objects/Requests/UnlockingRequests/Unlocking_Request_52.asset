@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 63
   requestText: 'I want some crustacean dishes '
   payment: 20
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 1e24269f3f8547b47bed9cb16fce07cf, type: 2}
   numOfIngredientsNeededToUnlock: 0

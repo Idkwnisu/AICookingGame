@@ -16,7 +16,8 @@ MonoBehaviour:
   requestText: "I haven\u2019t had peanuts in a while, prepare me something with
     that, please! "
   payment: 25
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: c76b69a6354913e4eb40f8373f980c88, type: 2}
   numOfIngredientsNeededToUnlock: 0

@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 105
   requestText: 'I feel a bit sick, can you help me? '
   payment: 70
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 61f7e61692ea8f549b51235c489db5a1, type: 2}
   numOfIngredientsNeededToUnlock: 0

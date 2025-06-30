@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 56
   requestText: 'Make me pasta! Literally anything with it! '
   payment: 20
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 296cf46663bd6024ab893de8503f126b, type: 2}
   numOfIngredientsNeededToUnlock: 0

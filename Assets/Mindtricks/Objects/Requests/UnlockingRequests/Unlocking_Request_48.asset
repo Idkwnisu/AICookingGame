@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 59
   requestText: 'I want something with Bulgur! I want to try it '
   payment: 24
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 0adbb42a988f59d458b4a5d236828c4c, type: 2}
   numOfIngredientsNeededToUnlock: 0

@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 51
   requestText: 'I want to eat meat, but something very unusual! '
   payment: 35
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: 04abdb0f39c44f147be853b8ffcc39d0, type: 2}
   numOfIngredientsNeededToUnlock: 0

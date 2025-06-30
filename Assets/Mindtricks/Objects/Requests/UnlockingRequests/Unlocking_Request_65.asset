@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 74
   requestText: 'I go bananas for bananas, you know what to do! '
   payment: 15
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: e8c61d96aebb60041a30fb44c89f4f95, type: 2}
   numOfIngredientsNeededToUnlock: 0

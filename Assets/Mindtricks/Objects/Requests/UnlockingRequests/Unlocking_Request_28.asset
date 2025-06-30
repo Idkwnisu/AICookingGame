@@ -16,7 +16,8 @@ MonoBehaviour:
   requestText: "I really like corn, but I\u2019m tired of the usual recipes. Make
     something cool with it! "
   payment: 14
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: cc6f82805ab2c4c46a822d29ba4254bb, type: 2}
   numOfIngredientsNeededToUnlock: 0

@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 57
   requestText: "I want to eat some grains, but I\u2019m tired of the usual recipes "
   payment: 24
-  charactersThatCanMakeTheRequest: []
+  charactersThatCanMakeTheRequest:
+  - {fileID: 11400000, guid: 7df744ff7197b2249afd7eb45fa2c9ec, type: 2}
   ingredientsNeededToUnlock:
   - {fileID: 11400000, guid: d45d60acef4b8084382826d3dd5bcfab, type: 2}
   numOfIngredientsNeededToUnlock: 0
