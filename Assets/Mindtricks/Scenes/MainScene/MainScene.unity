@@ -385,9 +385,9 @@ MonoBehaviour:
   dayStarted:
     m_PersistentCalls:
       m_Calls: []
-  ingredientManager: {fileID: 0}
-  requestManager: {fileID: 0}
-  dialogueEventManager: {fileID: 0}
+  ingredientManager: {fileID: 1238547411}
+  requestManager: {fileID: 1691976460}
+  dialogueEventManager: {fileID: 2080544167}
 --- !u!4 &297788843
 Transform:
   m_ObjectHideFlags: 0

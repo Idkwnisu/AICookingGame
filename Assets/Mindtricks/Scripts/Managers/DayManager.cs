@@ -51,6 +51,7 @@ public class DayManager : MonoBehaviour
         currentTimeInfos.currentDay++;
         DeactivateCurrentPhaseGameObjects();
         phasesOfDay[phasesOfDay.Length - 1].onExit.Invoke();
+        UnlockNewStuff();
         currentTimeInfos.currentPhase = phasesOfDay[0].phase;
         ActivateCurrentPhaseGameObjects();
         phasesOfDay[0].onEnter.Invoke();

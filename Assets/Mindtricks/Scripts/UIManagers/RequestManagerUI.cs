@@ -131,6 +131,7 @@ public class RequestManagerUI : MonoBehaviour
     {
         characterVisuals.style.backgroundImage = new StyleBackground();
         allIngredients?.Clear();
+        ingredientsSelected?.Clear();
         for (int i = 0; i < columnSize; i++)
         {
             VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + (i + 1) + "_Requests");
@@ -138,6 +139,7 @@ public class RequestManagerUI : MonoBehaviour
             for (int j = 0; j < rowSize; j++)
             {
                 Button button = itemRoot.Q<Button>("IngredientButton" + (i + 1) + (j + 1) + "_Requests");
+                button.style.backgroundColor = normalColor;
                 button.HideAndDisable();
             }
         }
