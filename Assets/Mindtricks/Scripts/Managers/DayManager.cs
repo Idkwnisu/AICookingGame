@@ -92,8 +92,8 @@ public class DayManager : MonoBehaviour
 
     public void UnlockNewStuff()
     {
-        requestManager.UnlockAllNewRequests();
         ingredientManager.UnlockAllNewIngredients();
+        requestManager.UnlockAllNewRequests();
         dialogueEventManager.UnlockAllNewDialogueEvents();
     }
 

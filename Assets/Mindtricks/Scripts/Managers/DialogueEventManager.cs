@@ -137,6 +137,10 @@ public class DialogueEventManager : MonoBehaviour
         {
             StartDialogue(nightDialoguesToDrawFrom[UnityEngine.Random.Range(0, nightDialoguesToDrawFrom.Count)]);
         }
+        else
+        {
+            DialoguesAreOver.Invoke();
+        }
     }
 
     public void ExtractDialogueAndStartIt()

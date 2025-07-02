@@ -49,6 +49,7 @@ public class RequestManager : MonoBehaviour
     public void RefreshUI()
     {
         //Check here if it's done for the day
+        IngredientsSelectedList.Clear();
         requestManagerUI.ResetUIAndIngredients();
         requestManagerUI.CreateUI(ingredientManager.currentIngredients);
     }

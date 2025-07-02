@@ -73,8 +73,7 @@ public class RequestManagerUI : MonoBehaviour
 
     public void HideUI()
     {
-        rootRequest.visible = false;
-        rootRequest.SetEnabled(false);
+        rootRequest.HideAndDisable();
         ResetUIAndIngredients();
     }
 
@@ -101,6 +100,8 @@ public class RequestManagerUI : MonoBehaviour
     public void CreateUI(List<Ingredient> ingredientsToAdd)
     {
         ResetUIAndIngredients();
+        sendButton.ShowAndEnable();
+
         for (int i = 0; i*rowSize < ingredientsToAdd.Count; i += 1)
         {
             VisualElement itemRoot = root.Q<VisualElement>("IngredientsRow" + (i+1) + "_Requests");
@@ -130,6 +131,8 @@ public class RequestManagerUI : MonoBehaviour
     public void ResetUIAndIngredients()
     {
         characterVisuals.style.backgroundImage = new StyleBackground();
+        sendButton.HideAndDisable();
+
         allIngredients?.Clear();
         ingredientsSelected?.Clear();
         for (int i = 0; i < columnSize; i++)

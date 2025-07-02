@@ -4,13 +4,14 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
-public struct UnlockIngredients
+public class UnlockIngredients
 {
     public string name;
     public int id;
     public List<Ingredient> ingredientsUnlocked;
     public List<Ingredient> ingredientsNeededToUnlock;
     public int numOfIngredientsNeededToUnlock;
+    public bool unlocked;
 }
 
 
@@ -32,7 +33,7 @@ public class IngredientManager : MonoBehaviour
         for(int i = 0; i < ingredientsToUnlockInTheShop.Count; i++)
         {
             bool unlockable = true;
-            if (ingredientsToUnlockInTheShop[i].numOfIngredientsNeededToUnlock < currentIngredients.Count)
+            if (ingredientsToUnlockInTheShop[i].numOfIngredientsNeededToUnlock > currentIngredients.Count)
                 unlockable = false;
             for(int j = 0; j <ingredientsToUnlockInTheShop[i].ingredientsNeededToUnlock.Count; j++)
             {
@@ -52,14 +53,22 @@ public class IngredientManager : MonoBehaviour
 
     public void UnlockAllIngredientsFromASingleUnlockable(int index)
     {
-        unlocked.Add(index);
-        for (int j = 0; j < ingredientsToUnlockInTheShop[index].ingredientsUnlocked.Count; j++)
+        if (!ingredientsToUnlockInTheShop[index].unlocked)
         {
-            UnlockIngredient(ingredientsToUnlockInTheShop[index].ingredientsUnlocked[j]);
+            ingredientsToUnlockInTheShop[index].unlocked = true;
+            unlocked.Add(index);
+            for (int j = 0; j < ingredientsToUnlockInTheShop[index].ingredientsUnlocked.Count; j++)
+            {
+                AddItemToShop(ingredientsToUnlockInTheShop[index].ingredientsUnlocked[j]);
+            }
         }
     }
 
-    public void UnlockIngredient(Ingredient ingredientToUnlock)
+    public void AddItemToShop(Ingredient ingredientToUnlock)
+    {
+        ingredientsToBuy.Add(ingredientToUnlock);
+    }
+    public void UnlockIngredientFromTheShop(Ingredient ingredientToUnlock)
     {
         if(ingredientsToBuy.Contains(ingredientToUnlock))
         {
