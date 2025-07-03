@@ -7,7 +7,7 @@ public class UITester : MonoBehaviour
     public DialogueEventManager dialogueManager;
     public RequestManager requestManager;
 
-    public DialogueEvent dialogueToTest;
+    public BaseDialogue dialogueToTest;
 
     private void OnGUI()
     {

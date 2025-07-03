@@ -31,8 +31,8 @@ public class DialogueDebugger_Editor : Editor
         if(EditorGUI.EndChangeCheck())
         {
             debug = "";
-            CheckValidity((DialogueEvent)dialogueToDebug.objectReferenceValue);
-            PrintDialogue((DialogueEvent)dialogueToDebug.objectReferenceValue, 0);
+            CheckValidity((BaseDialogue)dialogueToDebug.objectReferenceValue);
+            PrintDialogue((BaseDialogue)dialogueToDebug.objectReferenceValue, 0);
         }
         EditorGUI.BeginChangeCheck();
         EditorGUILayout.PropertyField(requestsToDebug);
@@ -48,64 +48,56 @@ public class DialogueDebugger_Editor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 
-    public void PrintDialogue(DialogueEvent eventToPrint, int depth)
+    public void PrintDialogue(BaseDialogue eventToPrint, int depth)
     {
-        if (eventToPrint.isPlayer)
+        if (eventToPrint is PlayerDialogueEvent playerDialogueEvent)
         {
-            for (int i = 0; i < eventToPrint.playerDialogue.options.Count; i++)
+            for (int i = 0; i < playerDialogueEvent.options.Count; i++)
             {
                 
                 debug += new string(' ', depth * 3);
-                debug += eventToPrint.playerDialogue.options[i];
+                debug += playerDialogueEvent.options[i];
                 debug += "\n";
                 Debug.Log(debug);
-                PrintDialogue(eventToPrint.playerDialogue.nextDialogues[i], depth+1);
+                PrintDialogue(playerDialogueEvent.nextDialogues[i], depth+1);
             }
         }
-        else
+        else if(eventToPrint is NPCDialogueEvent npcDialogueEvent)
         {
             debug += new string(' ', depth * 3);
-            debug += eventToPrint.dialogueNPC.message;
+            debug += npcDialogueEvent.message;
             debug += "\n";
 
             Debug.Log(debug);
-            if (eventToPrint.dialogueNPC.nextDialogue != null)
+            if (npcDialogueEvent.nextDialogue != null)
             {
-                PrintDialogue(eventToPrint.dialogueNPC.nextDialogue, depth+1);
+                PrintDialogue(npcDialogueEvent.nextDialogue, depth+1);
             }
         }
     }
 
-    public void CheckValidity(DialogueEvent eventToCheck)
+    public void CheckValidity(BaseDialogue eventToCheck)
     {
-        if(eventToCheck.isPlayer)
+        if (eventToCheck is PlayerDialogueEvent playerDialogueEvent)
         {
-            if(eventToCheck.dialogueNPC.message != "")
-            {
-                Debug.LogError("A message in an event is not empty when not used - " + eventToCheck.name);
-            }
-            if(eventToCheck.playerDialogue.options.Count != eventToCheck.playerDialogue.nextDialogues.Count)
+            if (playerDialogueEvent.options.Count != playerDialogueEvent.nextDialogues.Count)
             {
                 Debug.LogError("Mismatch in number of options and dialogues - " + eventToCheck.name);
             }
-            for(int i = 0; i < eventToCheck.playerDialogue.options.Count; i++)
+            for (int i = 0; i < playerDialogueEvent.options.Count; i++)
             {
-                CheckValidity(eventToCheck.playerDialogue.nextDialogues[i]);
+                CheckValidity(playerDialogueEvent.nextDialogues[i]);
             }
         }
-        else
-        {
-            if(eventToCheck.playerDialogue.options.Count != 0)
+        else if(eventToCheck is NPCDialogueEvent npcDialogueEvent)
+        { 
+            if (npcDialogueEvent.nextDialogue != null)
             {
-                Debug.LogError("An NPC event has player options - " + eventToCheck.name);
-
-            }
-            if(eventToCheck.dialogueNPC.nextDialogue != null)
-            {
-                CheckValidity(eventToCheck.dialogueNPC.nextDialogue);
+                CheckValidity(npcDialogueEvent.nextDialogue);
             }
         }
     }
+
 
     public void CheckRequestIndexes(SerializedProperty requestsToCheck)
     {

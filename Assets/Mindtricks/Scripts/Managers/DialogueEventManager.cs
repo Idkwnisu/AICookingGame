@@ -8,7 +8,7 @@ public enum UnlockableDialogueType { STORY, RANDOM, ENDLESS, NIGHT }
 [Serializable]
 public struct UnlockableDialogue
 {
-    public DialogueEvent unlockable;
+    public BaseDialogue unlockable;
     public int numOfIngredientsNeededToUnlock;
     public List<Ingredient> ingredientsNeededToUnlock;
     public UnlockableDialogueType type;
@@ -16,7 +16,7 @@ public struct UnlockableDialogue
 [Serializable]
 public struct SpecificDialogue
 {
-    public DialogueEvent unlockable;
+    public BaseDialogue unlockable;
     public int numberOfIngredientsToUnlock;
     public List<Ingredient> ingredientsNeededToUnlock;
 }
@@ -24,11 +24,11 @@ public struct SpecificDialogue
 
 public class DialogueEventManager : MonoBehaviour
 {
-    public List<DialogueEvent> regularDialoguesToDrawFrom;
-    public List<DialogueEvent> storyDialoguesToDrawFrom;
-    public List<DialogueEvent> nightDialoguesToDrawFrom;
-    public List<DialogueEvent> endlessDialogues;
-    public List<DialogueEvent> completedDialogues;
+    public List<BaseDialogue> regularDialoguesToDrawFrom;
+    public List<BaseDialogue> storyDialoguesToDrawFrom;
+    public List<BaseDialogue> nightDialoguesToDrawFrom;
+    public List<BaseDialogue> endlessDialogues;
+    public List<BaseDialogue> completedDialogues;
     public List<UnlockableDialogue> unlockableDialogues;
     public IngredientManager ingredientManager;
     public UnityEvent DialoguesAreOver;
@@ -36,7 +36,7 @@ public class DialogueEventManager : MonoBehaviour
 
     public DialogueManagerUI dialogueManagerUI;
 
-    private DialogueEvent currentEvent;
+    private BaseDialogue currentEvent;
 
     private List<int> dialoguesUnlocked;
     private List<int> dialoguesRemoved;
@@ -82,26 +82,39 @@ public class DialogueEventManager : MonoBehaviour
 
     public void ClickedNPCGoOnButton()
     {
-        if(currentEvent.dialogueNPC.nextDialogue != null)
+        if (currentEvent is NPCDialogueEvent npcDialogueEvent)
         {
-            StartDialogue(currentEvent.dialogueNPC.nextDialogue);
+
+
+            if (npcDialogueEvent.nextDialogue != null)
+            {
+                StartDialogue(npcDialogueEvent.nextDialogue);
+            }
+            else
+            {
+                dialogueManagerUI.ResetDialogueUI();
+                DialoguesAreOver.Invoke();
+            }
         }
         else
         {
-            dialogueManagerUI.ResetDialogueUI();
-            DialoguesAreOver.Invoke();
+            Debug.LogError($"Clicked npc go on button, but current event is player, something went wrong. Current Event id:{currentEvent.id}");
         }
     }
 
     public void ClickedPlayerChoiceButton(int buttonPressed)
     {
-        if(currentEvent.playerDialogue.nextDialogues.Count != 0)
+        if (currentEvent is PlayerDialogueEvent playerDialogueEvent)
         {
-            StartDialogue(currentEvent.playerDialogue.nextDialogues[buttonPressed]);
-        }
-        else
-        {
-            DialoguesAreOver.Invoke();
+
+            if (playerDialogueEvent.nextDialogues.Count != 0)
+            {
+                StartDialogue(playerDialogueEvent.nextDialogues[buttonPressed]);
+            }
+            else
+            {
+                DialoguesAreOver.Invoke();
+            }
         }
     }
 
@@ -115,7 +128,7 @@ public class DialogueEventManager : MonoBehaviour
         dialogueManagerUI.ResetDialogueUI();
         dialogueManagerUI.HideUI();
     }
-    public DialogueEvent ExtractDialogue()
+    public BaseDialogue ExtractDialogue()
     {
         if(storyDialoguesToDrawFrom.Count != 0)
         {
@@ -148,7 +161,7 @@ public class DialogueEventManager : MonoBehaviour
         StartDialogue(ExtractDialogue());
     }
 
-    public void StartDialogue(DialogueEvent dialogueEventToStart)
+    public void StartDialogue(BaseDialogue dialogueEventToStart)
     {
         currentEvent = dialogueEventToStart;
         dialogueManagerUI.ShowEvent(dialogueEventToStart);
@@ -206,7 +219,7 @@ public class DialogueEventManager : MonoBehaviour
         regularDialoguesToDrawFrom.Add(dialogue.unlockable);
     }
 
-    public void CompleteStoryDialogue(DialogueEvent dialogue)
+    public void CompleteStoryDialogue(BaseDialogue dialogue)
     {
         completedDialogues.Add(dialogue);
         storyDialoguesToDrawFrom.Remove(dialogue);
@@ -216,7 +229,7 @@ public class DialogueEventManager : MonoBehaviour
         }
         dialoguesRemoved.Add(dialogue.id);
     }
-    public void CompleteRegularDialogue(DialogueEvent dialogue)
+    public void CompleteRegularDialogue(BaseDialogue dialogue)
     {
         completedDialogues.Add(dialogue);
         regularDialoguesToDrawFrom.Remove(dialogue);
@@ -227,7 +240,7 @@ public class DialogueEventManager : MonoBehaviour
         dialoguesRemoved.Add(dialogue.id);
     }
     
-    public void CompleteNightDialogue(DialogueEvent dialogue)
+    public void CompleteNightDialogue(BaseDialogue dialogue)
     {
         completedDialogues.Add(dialogue);
         nightDialoguesToDrawFrom.Remove(dialogue);

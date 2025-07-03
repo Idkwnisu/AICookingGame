@@ -3,7 +3,7 @@ using UnityEngine;
 public class Sanitizer : MonoBehaviour
 {
     [SerializeField]
-    public DialogueEvent dialogueToDebug;
+    public BaseDialogue dialogueToDebug;
     
     [SerializeField]
     public Request[] requestsToDebug;

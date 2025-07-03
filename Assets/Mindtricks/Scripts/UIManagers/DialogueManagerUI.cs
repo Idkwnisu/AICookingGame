@@ -97,9 +97,9 @@ public class DialogueManagerUI : MonoBehaviour
 
     }
 
-    public void ShowEvent(DialogueEvent dialogue)
+    public void ShowEvent(BaseDialogue dialogue)
     {
-        if(dialogue.isPlayer)
+        if(dialogue is PlayerDialogueEvent playerDialogueEvent)
         {
             characterSpeakingLabel.text = "You";
             characterDialogueLabel.text = "";
@@ -108,9 +108,9 @@ public class DialogueManagerUI : MonoBehaviour
 
             for(int i = 0; i < playerChoicesButtons.Count; i++)
             {
-                if(i < dialogue.playerDialogue.options.Count)
+                if(i < playerDialogueEvent.options.Count)
                 {
-                    playerChoicesButtons[i].text = dialogue.playerDialogue.options[i];
+                    playerChoicesButtons[i].text = playerDialogueEvent.options[i];
                     playerChoicesButtons[i].ShowAndEnable();
                 }
                 else
@@ -120,14 +120,14 @@ public class DialogueManagerUI : MonoBehaviour
                 }
             }
         }
-        else
+        else if(dialogue is NPCDialogueEvent npcDialogueEvent)
         {
-            characterSpeakingLabel.text = dialogue.dialogueNPC.characterThatIsSpeaking.nomePersonaggio;
-            characterDialogueLabel.text = dialogue.dialogueNPC.message;
+            characterSpeakingLabel.text = npcDialogueEvent.characterThatIsSpeaking.nomePersonaggio;
+            characterDialogueLabel.text = npcDialogueEvent.message;
             characterDialogueLabel.ShowAndEnable();
             NPCButtoGoOn.ShowAndEnable();
 
-            characterImage.style.backgroundImage = new StyleBackground(dialogue.dialogueNPC.characterThatIsSpeaking.immaginiEmozion[(int)dialogue.dialogueNPC.emotionToUse]);
+            characterImage.style.backgroundImage = new StyleBackground(npcDialogueEvent.characterThatIsSpeaking.immaginiEmozion[(int)npcDialogueEvent.emotionToUse]);
 
             for (int i = 0; i < playerChoicesButtons.Count; i++)
             {
