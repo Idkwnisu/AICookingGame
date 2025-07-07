@@ -1372,6 +1372,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d2afae937773640489bc4b36cd852e2f, type: 2}
     - {fileID: 11400000, guid: 5f9d2df2e3b28c54197a0e9b6e939f06, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Meat Pack 2
     id: 2
     ingredientsUnlocked:
@@ -1385,6 +1386,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: dd3d2a09c0bdd2744979ba1fc018ac8c, type: 2}
     - {fileID: 11400000, guid: 5d0d0a3802d81be4b96645a832d954c1, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Meat Pack 3
     id: 3
     ingredientsUnlocked:
@@ -1398,6 +1400,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 4fc6021641931d24aa7d8a07fcb78530, type: 2}
     - {fileID: 11400000, guid: 516fe558c6a312540967845878e011ed, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Meat Pack 4
     id: 4
     ingredientsUnlocked:
@@ -1410,6 +1413,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 8cfe7bde423cc374f904a2a25f974823, type: 2}
     - {fileID: 11400000, guid: 04abdb0f39c44f147be853b8ffcc39d0, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Grain Pack 1
     id: 5
     ingredientsUnlocked:
@@ -1421,6 +1425,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d1db5144f181a7f479d27e3ab303818b, type: 2}
     - {fileID: 11400000, guid: a4f7dba25323b7644b1bc529b7e170b5, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Grain Pack 2
     id: 6
     ingredientsUnlocked:
@@ -1432,6 +1437,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 665b96a5aecf1b84aa9443ddb84320e8, type: 2}
     - {fileID: 11400000, guid: 296cf46663bd6024ab893de8503f126b, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Dessert Pack 1
     id: 7
     ingredientsUnlocked:
@@ -1442,6 +1448,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 9180511074bae764a94b87215704a638, type: 2}
     - {fileID: 11400000, guid: 3382b585f8679a045b5108984fb30401, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Dessert Pack 2
     id: 8
     ingredientsUnlocked:
@@ -1453,6 +1460,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: bbff538c2a050214f89c25a3c01c971e, type: 2}
     - {fileID: 11400000, guid: c33d5a3c2d7961a41aac9a53fd5c57be, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Seafood Pack 1
     id: 9
     ingredientsUnlocked:
@@ -1463,6 +1471,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: aad04cebc325ae246b120d78ed724621, type: 2}
     - {fileID: 11400000, guid: 0716b1b6ded68b748be160021f61b180, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Seafood Pack 2
     id: 10
     ingredientsUnlocked:
@@ -1475,6 +1484,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 1e24269f3f8547b47bed9cb16fce07cf, type: 2}
     - {fileID: 11400000, guid: fdc4f9e3dd0be0a4ea7bad82d26c9974, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Seafood Pack 3
     id: 11
     ingredientsUnlocked:
@@ -1486,6 +1496,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 5d06339e44601e04ea940657907757e2, type: 2}
     - {fileID: 11400000, guid: 9a526d38bbdbe63479ff37b1d155395d, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Seafood Pack 4
     id: 12
     ingredientsUnlocked:
@@ -1497,6 +1508,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 973cd968527809847962918a9b451b34, type: 2}
     - {fileID: 11400000, guid: 975d8ccd5ec2ccd498973480fe36834a, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Fruit Pack 1
     id: 13
     ingredientsUnlocked:
@@ -1506,6 +1518,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e2a9b81a93d0d8140bcbb93775235297, type: 2}
     ingredientsNeededToUnlock: []
     numOfIngredientsNeededToUnlock: 30
+    unlocked: 0
   - name: Fruit Pack 2
     id: 14
     ingredientsUnlocked:
@@ -1519,6 +1532,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 41d6b9c82854ce340a56123ddf11da04, type: 2}
     - {fileID: 11400000, guid: e2a9b81a93d0d8140bcbb93775235297, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Fruit Pack 3
     id: 15
     ingredientsUnlocked:
@@ -1531,6 +1545,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a060b6868d813de42a89558a78875b40, type: 2}
     - {fileID: 11400000, guid: 25ac338985c9db34d990daae995cd64f, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Vegetable Pack 1
     id: 16
     ingredientsUnlocked:
@@ -1541,6 +1556,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: b64b47d2f20dccb49a80f311a6d11d77, type: 2}
     ingredientsNeededToUnlock: []
     numOfIngredientsNeededToUnlock: 20
+    unlocked: 0
   - name: Vegetable Pack 2
     id: 17
     ingredientsUnlocked:
@@ -1555,6 +1571,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 286d14cdb5ce9a742b046e82829f6fb7, type: 2}
     - {fileID: 11400000, guid: b64b47d2f20dccb49a80f311a6d11d77, type: 2}
     numOfIngredientsNeededToUnlock: 20
+    unlocked: 0
   - name: Vegetable Pack 3
     id: 18
     ingredientsUnlocked:
@@ -1568,11 +1585,13 @@ MonoBehaviour:
     - {fileID: 11400000, guid: eca4af57e3697ae43a3848fed94b19c2, type: 2}
     - {fileID: 11400000, guid: 65344dd543ea4f546818e862cd5ec045, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Vegetable Pack 4
     id: 19
     ingredientsUnlocked: []
     ingredientsNeededToUnlock: []
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Vegetable And Fruit Pack
     id: 20
     ingredientsUnlocked:
@@ -1591,6 +1610,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 3d3ab49508e54e049a34a7e34838eb04, type: 2}
     - {fileID: 11400000, guid: c7ae11bb83790774ea3a29dcd9f9e3d0, type: 2}
     numOfIngredientsNeededToUnlock: 70
+    unlocked: 0
   - name: Nuts And Seeds Pack 1
     id: 21
     ingredientsUnlocked:
@@ -1600,6 +1620,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 6ba71f29b1323bb45ad3d78a30042421, type: 2}
     ingredientsNeededToUnlock: []
     numOfIngredientsNeededToUnlock: 70
+    unlocked: 0
   - name: Nuts And Seeds Pack 2
     id: 22
     ingredientsUnlocked:
@@ -1614,6 +1635,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 00fdd3a7c9e9a1647a6d14c9ce254c1d, type: 2}
     - {fileID: 11400000, guid: 6ba71f29b1323bb45ad3d78a30042421, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Legumes Pack
     id: 23
     ingredientsUnlocked:
@@ -1624,6 +1646,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a6ebc6c9a7e04b64295065e6383fbd4e, type: 2}
     ingredientsNeededToUnlock: []
     numOfIngredientsNeededToUnlock: 50
+    unlocked: 0
   - name: Cheese Pack
     id: 24
     ingredientsUnlocked:
@@ -1635,6 +1658,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 9180511074bae764a94b87215704a638, type: 2}
     - {fileID: 11400000, guid: c8f5c13c5a3dba64699aaa6977d4f9b2, type: 2}
     numOfIngredientsNeededToUnlock: 90
+    unlocked: 0
   - name: Spices and sauces pack 1
     id: 25
     ingredientsUnlocked:
@@ -1643,6 +1667,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 002d2ee45e593754cb034e580ad5e1e1, type: 2}
     ingredientsNeededToUnlock: []
     numOfIngredientsNeededToUnlock: 90
+    unlocked: 0
   - name: Spices and sauces pack 2
     id: 26
     ingredientsUnlocked:
@@ -1656,12 +1681,14 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 7f1064e43241e554482d47e00c0432a8, type: 2}
     - {fileID: 11400000, guid: 002d2ee45e593754cb034e580ad5e1e1, type: 2}
     numOfIngredientsNeededToUnlock: 0
+    unlocked: 0
   - name: Alcohol Pack
     id: 27
     ingredientsUnlocked:
     - {fileID: 11400000, guid: 9a6c62c5be404ed4285c29b787006ebd, type: 2}
     ingredientsNeededToUnlock: []
     numOfIngredientsNeededToUnlock: 100
+    unlocked: 0
   - name: Spicy Pack
     id: 28
     ingredientsUnlocked:
@@ -1673,6 +1700,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c365fb85b71a55e47b4a5f540e848561, type: 2}
     - {fileID: 11400000, guid: c365fb85b71a55e47b4a5f540e848561, type: 2}
     numOfIngredientsNeededToUnlock: 100
+    unlocked: 0
   - name: Icy Pack
     id: 29
     ingredientsUnlocked:
@@ -1682,6 +1710,7 @@ MonoBehaviour:
     ingredientsNeededToUnlock:
     - {fileID: 11400000, guid: df0ad42abe9b59345948f8057f597e5d, type: 2}
     numOfIngredientsNeededToUnlock: 80
+    unlocked: 0
   - name: Vegan Pack
     id: 30
     ingredientsUnlocked:
@@ -1693,6 +1722,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 46aba90dabe9a61479a65b3283ed2bb9, type: 2}
     - {fileID: 11400000, guid: e5bd90d893a498f489010051db05f776, type: 2}
     numOfIngredientsNeededToUnlock: 80
+    unlocked: 0
   - name: Drinks Pack
     id: 31
     ingredientsUnlocked:
@@ -1702,6 +1732,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 9a6c62c5be404ed4285c29b787006ebd, type: 2}
     - {fileID: 11400000, guid: c8f5c13c5a3dba64699aaa6977d4f9b2, type: 2}
     numOfIngredientsNeededToUnlock: 70
+    unlocked: 0
   - name: Weird Pack
     id: 32
     ingredientsUnlocked:
@@ -1711,6 +1742,7 @@ MonoBehaviour:
     ingredientsNeededToUnlock:
     - {fileID: 11400000, guid: 527fbe7a87b46ae4c855e68d06e000a8, type: 2}
     numOfIngredientsNeededToUnlock: 100
+    unlocked: 0
   requestManager: {fileID: 1691976460}
   shopManager: {fileID: 768978309}
   IngredientsHaveChanged_Event:
@@ -1921,6 +1953,81 @@ MonoBehaviour:
   blockedColor: {r: 0, g: 0, b: 0, a: 0}
   numSelection: 5
   requestManager: {fileID: 1691976460}
+--- !u!1 &1630675583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1630675586}
+  - component: {fileID: 1630675585}
+  - component: {fileID: 1630675584}
+  - component: {fileID: 1630675587}
+  m_Layer: 0
+  m_Name: SaveSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1630675584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630675583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af0d9b6de79f76345af6b083c9f21ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1630675585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630675583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8f4e9dde8239e42af1973841238ea0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fileDiskManager: {fileID: 1630675584}
+  ingredientManager: {fileID: 1238547411}
+  requestManager: {fileID: 1691976460}
+  dialogueEventManager: {fileID: 2080544167}
+--- !u!4 &1630675586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630675583}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.01886, y: -0.09154, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1630675587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630675583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4451e86748b13be419d3417e481af2ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiDocument: {fileID: 0}
 --- !u!1 &1691976458
 GameObject:
   m_ObjectHideFlags: 0
@@ -2248,7 +2355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1893726852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2493,3 +2600,4 @@ SceneRoots:
   - {fileID: 1367461092}
   - {fileID: 1893726853}
   - {fileID: 566809669}
+  - {fileID: 1630675586}

@@ -26,31 +26,54 @@ public class SaveFileManager : MonoBehaviour
     public IngredientManager ingredientManager;
     public RequestManager requestManager;
     public DialogueEventManager dialogueEventManager;
+    public SaveFileManagerUI saveFileManagerUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         saveFiles = new SaveFile[numberOfSaveFiles];
+
         for(int i = 0; i < numberOfSaveFiles; i++)
         {
             if (PlayerPrefs.HasKey("SaveFile_" + i))
             {
                 ReadFromDisk(i);
+                saveFileManagerUI.SetSaveFile(true, i);
             }
             else
             {
+                saveFileManagerUI.SetSaveFile(false, i);
                 saveFiles[i] = new SaveFile();
                 saveFiles[i].dialoguesUnlocked = new List<int>();
                 saveFiles[i].ingredientsUnlocked = new List<int>();
                 saveFiles[i].requestsUnlocked = new List<int>();
+                saveFiles[i].currentDay = 1;
+                saveFiles[i].currentPhase = 1;
             }
         }
     }
 
+    public void DispatchButtonPressed(int pressed, bool loadGame)
+    {
+        if(loadGame)
+        {
+            LoadGameData(pressed);
+        }
+        else
+        {
+            CreateNewGameData(pressed);
+        }
+    }
+
+
     public void LoadGameData(int n)
     {
-        ingredientManager.UnlockIngredients(saveFiles[currentGameData].ingredientsUnlocked);
-        requestManager.UnlockRequests(saveFiles[currentGameData].requestsUnlocked);
-        dialogueEventManager.UnlockAndRemoveDialogues(saveFiles[currentGameData].dialoguesUnlocked, saveFiles[currentGameData].dialoguesRemoved);
+        if(saveFiles[n].currentDay == 1 && saveFiles[n].currentPhase == 1)
+        {
+            Debug.LogError("TRYING TO LOAD AN EMPTY GAME");
+        }
+        ingredientManager.UnlockIngredients(saveFiles[n].ingredientsUnlocked);
+        requestManager.UnlockRequests(saveFiles[n].requestsUnlocked);
+        dialogueEventManager.UnlockAndRemoveDialogues(saveFiles[n].dialoguesUnlocked, saveFiles[n].dialoguesRemoved);
     }
 
     public void SaveCurrentGameData()
@@ -63,6 +86,10 @@ public class SaveFileManager : MonoBehaviour
 
     public void CreateNewGameData(int n)
     {
+        if(saveFiles[n].currentDay != 1 || saveFiles[n].currentPhase != 1)
+        {
+            Debug.LogError("TRYING TO CREATE A DATA ON NON EMPTY GAME");
+        }
         currentGameData = n;
     }
 

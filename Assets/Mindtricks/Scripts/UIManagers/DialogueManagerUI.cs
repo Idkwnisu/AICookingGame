@@ -26,7 +26,6 @@ public class DialogueManagerUI : MonoBehaviour
         ResetDialogueUI();
         HideUI();
         RegisterCallbacks();
-        CreateArrays();
     }
 
     public void GetUIReferences()
@@ -90,11 +89,6 @@ public class DialogueManagerUI : MonoBehaviour
     public void ClickedPlayerButton(ClickEvent ev, int buttonNumber)
     {
         pressedCharacterChoice?.Invoke(buttonNumber);
-    }
-
-    public void CreateArrays()
-    {
-
     }
 
     public void ShowEvent(BaseDialogue dialogue)

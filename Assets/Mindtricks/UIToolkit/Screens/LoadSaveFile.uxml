@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="SaveFilesBackground" style="flex-grow: 1; -unity-background-image-tint-color: rgb(255, 255, 255); background-color: rgb(4, 10, 34);">
+        <ui:Button text="Button" name="SaveFileButton1" style="height: 30%; top: 4%; font-size: 91px;" />
+        <ui:Button text="Button" name="SaveFileButton2" style="height: 30%; top: 4%; font-size: 91px;" />
+        <ui:Button text="Button" name="SaveFileButton3" style="height: 30%; top: 4%; font-size: 91px;" />
+    </ui:VisualElement>
+</ui:UXML>

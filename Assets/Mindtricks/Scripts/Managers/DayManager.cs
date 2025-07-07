@@ -33,10 +33,9 @@ public class DayManager : MonoBehaviour
 
     private void Start()
     {
-        StartGameOrLoad();
     }
 
-    public void StartGameOrLoad()
+    public void StartGame()
     {
         //Check for savefile here
         currentTimeInfos.currentDay = 0;
