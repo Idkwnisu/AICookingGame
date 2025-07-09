@@ -36,7 +36,7 @@ public class ShopManagerUI : MonoBehaviour
     private int rowSize = 5;
     private int columnSize = 12;
 
-    public event Action exitButtonPressed;
+    public event EventHandler exitButtonPressed;
 
     private void Awake()
     {
@@ -180,7 +180,7 @@ public class ShopManagerUI : MonoBehaviour
     }
     private void ExitButtonClicked(ClickEvent evt)
     {
-        exitButtonPressed.Invoke();
+        exitButtonPressed.Invoke(this, EventArgs.Empty);
     }
 
     private void CloseInfoModal()

@@ -28,9 +28,11 @@ public class SaveFileManager : MonoBehaviour
     public DialogueEventManager dialogueEventManager;
     public SaveFileManagerUI saveFileManagerUI;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
         saveFiles = new SaveFile[numberOfSaveFiles];
+
+        saveFileManagerUI.Init(numberOfSaveFiles);
 
         for(int i = 0; i < numberOfSaveFiles; i++)
         {

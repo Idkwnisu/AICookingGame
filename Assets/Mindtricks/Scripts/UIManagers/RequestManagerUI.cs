@@ -31,8 +31,8 @@ public class RequestManagerUI : MonoBehaviour
     private int rowSize = 5;
     private int columnSize = 12;
 
-    public event Action sendingIngredients;
-    public event Action refresh;
+    public event EventHandler sendingIngredients;
+    public event EventHandler refresh;
 
     public RequestManager requestManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -88,12 +88,12 @@ public class RequestManagerUI : MonoBehaviour
     {
         if (sendButton.text == "Send")
         {
-            sendingIngredients?.Invoke();
+            sendingIngredients?.Invoke(this, EventArgs.Empty);
             sendButton.text = "Go On";
         }
         else
         {
-            refresh?.Invoke();
+            refresh?.Invoke(this, EventArgs.Empty);
             sendButton.text = "Send";
         }
     }

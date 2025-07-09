@@ -14,7 +14,7 @@ public class SaveFileManagerUI : MonoBehaviour
     public event Action<int, bool> saveButtonPressed;
     int numOfSaveFiles;
 
-    void Init(int numOfSaveFiles)
+    public void Init(int numOfSaveFiles)
     {
         this.numOfSaveFiles = numOfSaveFiles;
         saveButton = new Button[numOfSaveFiles];
@@ -30,7 +30,7 @@ public class SaveFileManagerUI : MonoBehaviour
 
         for(int i = 0; i < numOfSaveFiles; i++)
         {
-            saveButton[i] = rootSave.Q<Button>("SaveFileButton" + i);
+            saveButton[i] = root.Q<Button>("SaveFileButton" + (i+1));
         }
     }
 

@@ -48,6 +48,12 @@ public class DialogueEventManager : MonoBehaviour
         dialogueManagerUI.pressedCharacterChoice += ClickedPlayerChoiceButton;
     }
 
+    private void OnDestroy()
+    {
+        dialogueManagerUI.pressedEnemyGoOn -= ClickedNPCGoOnButton;
+        dialogueManagerUI.pressedCharacterChoice -= ClickedPlayerChoiceButton;
+    }
+
 
     internal void UnlockAndRemoveDialogues(List<int> dialoguesUnlocked, List<int> dialoguesRemoved)
     {
@@ -80,7 +86,7 @@ public class DialogueEventManager : MonoBehaviour
         }
     }
 
-    public void ClickedNPCGoOnButton()
+    public void ClickedNPCGoOnButton(object sender, EventArgs args)
     {
         if (currentEvent is NPCDialogueEvent npcDialogueEvent)
         {
@@ -102,14 +108,14 @@ public class DialogueEventManager : MonoBehaviour
         }
     }
 
-    public void ClickedPlayerChoiceButton(int buttonPressed)
+    public void ClickedPlayerChoiceButton(object sender, OptionSelectedArgs buttonPressed)
     {
         if (currentEvent is PlayerDialogueEvent playerDialogueEvent)
         {
 
             if (playerDialogueEvent.nextDialogues.Count != 0)
             {
-                StartDialogue(playerDialogueEvent.nextDialogues[buttonPressed]);
+                StartDialogue(playerDialogueEvent.nextDialogues[buttonPressed.selected]);
             }
             else
             {

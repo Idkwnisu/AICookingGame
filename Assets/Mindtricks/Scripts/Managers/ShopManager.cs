@@ -41,7 +41,7 @@ public class ShopManager : MonoBehaviour
         HideUI();
     }
 
-    public void ExitShop()
+    public void ExitShop(object sender, EventArgs e)
     {
         exitShop.Invoke();
     }

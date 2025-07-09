@@ -1111,7 +1111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0ce689e07812be41b9571ced37df897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  apiSender: {fileID: 2124823307}
+  apiSender: {fileID: 0}
   step1: 'Make me a recipe, using only the ingredients provided. The ingredients
     might be fictional, in that case you will receive a description. You will answer
     with:
@@ -2000,6 +2000,7 @@ MonoBehaviour:
   ingredientManager: {fileID: 1238547411}
   requestManager: {fileID: 1691976460}
   dialogueEventManager: {fileID: 2080544167}
+  saveFileManagerUI: {fileID: 1630675587}
 --- !u!4 &1630675586
 Transform:
   m_ObjectHideFlags: 0
@@ -2027,7 +2028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4451e86748b13be419d3417e481af2ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDocument: {fileID: 0}
+  uiDocument: {fileID: 796280046}
 --- !u!1 &1691976458
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+public class OptionSelectedArgs : EventArgs
+{
+    public int selected { get; private set; }
+    public OptionSelectedArgs(int s)
+    {
+        selected = s;
+    }
+}
+
+
 public class DialogueManagerUI : MonoBehaviour
 {
     VisualElement root;
@@ -15,8 +25,8 @@ public class DialogueManagerUI : MonoBehaviour
     Button NPCButtoGoOn;
     VisualElement characterImage;
 
-    public event Action pressedEnemyGoOn;
-    public event Action<int> pressedCharacterChoice;
+    public event EventHandler pressedEnemyGoOn;
+    public event EventHandler<OptionSelectedArgs> pressedCharacterChoice;
 
     private int numOfPlayerChoicesInDialogue = 3;
 
@@ -83,12 +93,12 @@ public class DialogueManagerUI : MonoBehaviour
 
     public void ClickedNPCButton(ClickEvent ev)
     {
-        pressedEnemyGoOn?.Invoke();
+        pressedEnemyGoOn?.Invoke(this, EventArgs.Empty);
     }
 
     public void ClickedPlayerButton(ClickEvent ev, int buttonNumber)
     {
-        pressedCharacterChoice?.Invoke(buttonNumber);
+        pressedCharacterChoice?.Invoke(this, new OptionSelectedArgs(buttonNumber));
     }
 
     public void ShowEvent(BaseDialogue dialogue)

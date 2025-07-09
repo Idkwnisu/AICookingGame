@@ -30,8 +30,7 @@ public class RequestManager : MonoBehaviour
     {
         IngredientsSelectedList = new List<Ingredient>();
         requestManagerUI.sendingIngredients += SendFullRecipe;
-        requestManagerUI.refresh += RefreshUI;
-        requestManagerUI.refresh += ExtractNewRequest;
+        requestManagerUI.refresh += RefreshEventCalled;
     }
 
     public void RefreshRequestsBeforeGoingOn()
@@ -40,10 +39,16 @@ public class RequestManager : MonoBehaviour
         requestsBeforeGoingOn = 3;
     }
 
-    public void SendFullRecipe()
+    public void SendFullRecipe(object sender, EventArgs eventArgs)
     {
         requestManagerUI.HideSendButton();
         recipeSender.SendRecipe(IngredientsSelectedList, currentRequest.requestText, currentCharacterRequest.personalita);
+    }
+
+    public void RefreshEventCalled(object sender, EventArgs eventArgs)
+    {
+        RefreshUI();
+        ExtractNewRequest();
     }
 
     public void RefreshUI()
