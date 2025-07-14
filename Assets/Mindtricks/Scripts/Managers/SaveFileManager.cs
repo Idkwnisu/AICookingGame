@@ -9,6 +9,7 @@ public struct SaveFile
     public int currentDay;
     public int currentPhase;
     public List<int> ingredientsUnlocked;
+    public List<int> ingredientsBought;
     public List<int> dialoguesUnlocked;
     public List<int> dialoguesRemoved;
     public List<int> requestsUnlocked;
@@ -27,15 +28,21 @@ public class SaveFileManager : MonoBehaviour
     public RequestManager requestManager;
     public DialogueEventManager dialogueEventManager;
     public SaveFileManagerUI saveFileManagerUI;
+    public MoneyManager moneyManager;
+
+    public DayManager dayManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         saveFiles = new SaveFile[numberOfSaveFiles];
 
         saveFileManagerUI.Init(numberOfSaveFiles);
+        saveFileManagerUI.saveButtonPressed += DispatchButtonPressed;
 
-        for(int i = 0; i < numberOfSaveFiles; i++)
+
+        for (int i = 0; i < numberOfSaveFiles; i++)
         {
+
             if (PlayerPrefs.HasKey("SaveFile_" + i))
             {
                 ReadFromDisk(i);
@@ -54,17 +61,32 @@ public class SaveFileManager : MonoBehaviour
         }
     }
 
-    public void DispatchButtonPressed(int pressed, bool loadGame)
+    private void OnDestroy()
     {
-        if(loadGame)
+        saveFileManagerUI.saveButtonPressed -= DispatchButtonPressed;
+
+    }
+
+    public void DispatchButtonPressed(object sender, SaveLoadButtonArgs args)
+    {
+        if(args.loadButton)
         {
-            LoadGameData(pressed);
+            LoadGameData(args.buttonPressed);
         }
         else
         {
-            CreateNewGameData(pressed);
+            CreateNewGameData(args.buttonPressed);
         }
+
+        GoToGame();
     }
+
+    public void GoToGame()
+    {
+        saveFileManagerUI.HideUI();
+        dayManager.StartGame();
+    }
+
 
 
     public void LoadGameData(int n)
@@ -73,17 +95,26 @@ public class SaveFileManager : MonoBehaviour
         {
             Debug.LogError("TRYING TO LOAD AN EMPTY GAME");
         }
+        dayManager.SetDayAndPhase(saveFiles[n].currentDay, saveFiles[n].currentPhase);
         ingredientManager.UnlockIngredients(saveFiles[n].ingredientsUnlocked);
+        ingredientManager.BuyAllIngredients(saveFiles[n].ingredientsBought);
         requestManager.UnlockRequests(saveFiles[n].requestsUnlocked);
         dialogueEventManager.UnlockAndRemoveDialogues(saveFiles[n].dialoguesUnlocked, saveFiles[n].dialoguesRemoved);
     }
 
     public void SaveCurrentGameData()
     {
+        PlayerPrefs.SetFloat("SaveFile_" + currentGameData, 0.0f);
         saveFiles[currentGameData].ingredientsUnlocked = ingredientManager.GetIngredientsUnlocked();
+        saveFiles[currentGameData].ingredientsBought = ingredientManager.GetIngredientsBought();
         saveFiles[currentGameData].requestsUnlocked = requestManager.GetRequestsUnlocked();
         saveFiles[currentGameData].dialoguesUnlocked = dialogueEventManager.GetDialoguesUnlocked();
         saveFiles[currentGameData].dialoguesRemoved = dialogueEventManager.GetDialoguesRemoved();
+        saveFiles[currentGameData].currentDay = dayManager.currentTimeInfos.currentDay;
+        saveFiles[currentGameData].currentPhase = (int)dayManager.currentTimeInfos.currentPhase;
+        saveFiles[currentGameData].currentMoney = moneyManager.currentFinancialinfos.currentMoney;
+
+        SaveToDisk(currentGameData);
     }
 
     public void CreateNewGameData(int n)

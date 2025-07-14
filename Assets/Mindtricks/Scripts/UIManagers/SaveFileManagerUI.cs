@@ -2,6 +2,18 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+public class SaveLoadButtonArgs : EventArgs
+{
+    public int buttonPressed { get; private set; }
+    public bool loadButton { get; private set; }
+
+    public SaveLoadButtonArgs(int buttonPressed, bool loadButton)
+    {
+        this.buttonPressed = buttonPressed;
+        this.loadButton = loadButton;
+    }
+}
+
 public class SaveFileManagerUI : MonoBehaviour
 {
     VisualElement root;
@@ -11,7 +23,7 @@ public class SaveFileManagerUI : MonoBehaviour
     Button[] saveButton;
     bool[] isGamePresent;
 
-    public event Action<int, bool> saveButtonPressed;
+    public event EventHandler<SaveLoadButtonArgs> saveButtonPressed;
     int numOfSaveFiles;
 
     public void Init(int numOfSaveFiles)
@@ -20,7 +32,7 @@ public class SaveFileManagerUI : MonoBehaviour
         saveButton = new Button[numOfSaveFiles];
         isGamePresent = new bool[numOfSaveFiles];
         GetUIReferences();
-
+        RegisterCallbacks();
     }
 
     public void GetUIReferences()
@@ -34,6 +46,17 @@ public class SaveFileManagerUI : MonoBehaviour
         }
     }
 
+
+    public void HideUI()
+    {
+        rootSave.HideAndDisable();
+    }
+
+    public void ShowUI()
+    {
+        rootSave.ShowAndEnable();
+    }
+
     public void RegisterCallbacks()
     {
         for (int i = 0; i < numOfSaveFiles; i++)
@@ -44,12 +67,14 @@ public class SaveFileManagerUI : MonoBehaviour
 
     public void ClickedSaveButton(ClickEvent ev, int button)
     {
-        saveButtonPressed?.Invoke(button, isGamePresent[button]);
+        saveButtonPressed?.Invoke(this, new SaveLoadButtonArgs(button, isGamePresent[button]));
     }
 
     public void SetSaveFile(bool isPresent, int n) //Insert playtime as well? Maybe a name?
     {
-        if(isPresent)
+        isGamePresent[n] = isPresent;
+
+        if (isPresent)
         {
             saveButton[n].text = "Load game 1";
         }

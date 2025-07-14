@@ -79,8 +79,7 @@ public class RequestManagerUI : MonoBehaviour
 
     public void ShowUI()
     {
-        rootRequest.visible = true;
-        rootRequest.SetEnabled(true);
+        rootRequest.ShowAndEnable();
     }
 
 

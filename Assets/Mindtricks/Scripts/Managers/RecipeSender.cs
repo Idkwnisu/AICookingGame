@@ -7,6 +7,7 @@ using TMPro;
 
 public class RecipeSender : MonoBehaviour
 {
+    [SerializeReference]
     public APISender apiSender;
 
     private string requestSelected;

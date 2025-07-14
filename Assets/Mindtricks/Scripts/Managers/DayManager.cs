@@ -37,10 +37,6 @@ public class DayManager : MonoBehaviour
 
     public void StartGame()
     {
-        //Check for savefile here
-        currentTimeInfos.currentDay = 0;
-        currentTimeInfos.currentPhase = DAY_PHASE.NIGHT;
-
         NewDay();
     }
 
@@ -94,6 +90,12 @@ public class DayManager : MonoBehaviour
         ingredientManager.UnlockAllNewIngredients();
         requestManager.UnlockAllNewRequests();
         dialogueEventManager.UnlockAllNewDialogueEvents();
+    }
+
+    internal void SetDayAndPhase(int currentDay, int currentPhase)
+    {
+        this.currentTimeInfos.currentDay = currentDay;
+        this.currentTimeInfos.currentPhase = (DAY_PHASE)currentPhase;
     }
 
     public bool IsDialogueUnlockable(UnlockableDialogue unlockableDialogue)

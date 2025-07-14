@@ -55,7 +55,7 @@ public class ShopManager : MonoBehaviour
         if (moneyManager.isMoneyEnough(ingredientSelected.costo))
         {
             moneyManager.SpendMoney(ingredientSelected.costo);
-            ingredientManager.UnlockIngredientFromTheShop(ingredientSelected);
+            ingredientManager.BuyIngredientFromTheShop(ingredientSelected);
 
             IngredientsSelectedList.Remove(ingredientSelected);
             ingredientSelected = null;

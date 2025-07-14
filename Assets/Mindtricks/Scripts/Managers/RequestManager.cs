@@ -21,9 +21,13 @@ public class RequestManager : MonoBehaviour
     private Request currentRequest;
     private Character currentCharacterRequest;
 
+    [SerializeField]
+    private int maxRequestBeforeGoingOn = 3;
     private int requestsBeforeGoingOn = 3;
 
     public UnityEvent requestsOver;
+    
+    [SerializeField]
     private int scoreForFullPayment = 7;
 
     private void Awake()
@@ -36,7 +40,7 @@ public class RequestManager : MonoBehaviour
     public void RefreshRequestsBeforeGoingOn()
     {
         //TODO: Random formula based on day here(with a cap)
-        requestsBeforeGoingOn = 3;
+        requestsBeforeGoingOn = maxRequestBeforeGoingOn;
     }
 
     public void SendFullRecipe(object sender, EventArgs eventArgs)

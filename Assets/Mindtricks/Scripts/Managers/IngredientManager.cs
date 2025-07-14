@@ -26,7 +26,14 @@ public class IngredientManager : MonoBehaviour
 
     public UnityEvent IngredientsHaveChanged_Event;
 
-    public List<int> unlocked;
+    private List<int> unlocked;
+    private List<int> bought;
+
+    private void Awake()
+    {
+        unlocked = new List<int>();
+        bought = new List<int>();
+    }
 
     public void UnlockAllNewIngredients()
     {
@@ -68,13 +75,25 @@ public class IngredientManager : MonoBehaviour
     {
         ingredientsToBuy.Add(ingredientToUnlock);
     }
-    public void UnlockIngredientFromTheShop(Ingredient ingredientToUnlock)
+    public void BuyIngredientFromTheShop(Ingredient ingredientToUnlock)
     {
         if(ingredientsToBuy.Contains(ingredientToUnlock))
         {
             ingredientsToBuy.Remove(ingredientToUnlock);
             currentIngredients.Add(ingredientToUnlock);
+            bought.Add(ingredientToUnlock.id);
             IngredientsHaveChanged_Event.Invoke();
+        }
+    }
+
+    public void BuyAllIngredients(List<int> allIngredienst)
+    {
+        for(int i = ingredientsToUnlockInTheShop.Count - 1; i >= 0 ; i--)
+        {
+            if(allIngredienst.Contains(ingredientsToUnlockInTheShop[i].id))
+            {
+                BuyIngredientFromTheShop(ingredientsToBuy[i]);
+            }
         }
     }
 
@@ -82,6 +101,11 @@ public class IngredientManager : MonoBehaviour
     public List<int> GetIngredientsUnlocked()
     {
         return unlocked;
+    }
+
+    public List<int> GetIngredientsBought()
+    {
+        return bought;
     }
 
     public void UnlockIngredients(List<int> idIngredients)
