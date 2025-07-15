@@ -70,13 +70,13 @@ public class SaveFileManagerUI : MonoBehaviour
         saveButtonPressed?.Invoke(this, new SaveLoadButtonArgs(button, isGamePresent[button]));
     }
 
-    public void SetSaveFile(bool isPresent, int n) //Insert playtime as well? Maybe a name?
+    public void SetSaveFile(bool isPresent, int n, string date) //Insert playtime as well? Maybe a name?
     {
         isGamePresent[n] = isPresent;
 
         if (isPresent)
         {
-            saveButton[n].text = "Load game 1";
+            saveButton[n].text = $"Load game {n+1} - {date}";
         }
         else
         {

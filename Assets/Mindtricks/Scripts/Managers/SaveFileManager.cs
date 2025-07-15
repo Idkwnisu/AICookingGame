@@ -46,11 +46,11 @@ public class SaveFileManager : MonoBehaviour
             if (PlayerPrefs.HasKey("SaveFile_" + i))
             {
                 ReadFromDisk(i);
-                saveFileManagerUI.SetSaveFile(true, i);
+                saveFileManagerUI.SetSaveFile(true, i, PlayerPrefs.GetString("SaveFile_" + i));
             }
             else
             {
-                saveFileManagerUI.SetSaveFile(false, i);
+                saveFileManagerUI.SetSaveFile(false, i, "");
                 saveFiles[i] = new SaveFile();
                 saveFiles[i].dialoguesUnlocked = new List<int>();
                 saveFiles[i].ingredientsUnlocked = new List<int>();
@@ -104,7 +104,7 @@ public class SaveFileManager : MonoBehaviour
 
     public void SaveCurrentGameData()
     {
-        PlayerPrefs.SetFloat("SaveFile_" + currentGameData, 0.0f);
+        PlayerPrefs.SetString("SaveFile_" + currentGameData, DateTime.Now.ToShortDateString() + " " + DateTime.Now.ToShortTimeString());
         saveFiles[currentGameData].ingredientsUnlocked = ingredientManager.GetIngredientsUnlocked();
         saveFiles[currentGameData].ingredientsBought = ingredientManager.GetIngredientsBought();
         saveFiles[currentGameData].requestsUnlocked = requestManager.GetRequestsUnlocked();
